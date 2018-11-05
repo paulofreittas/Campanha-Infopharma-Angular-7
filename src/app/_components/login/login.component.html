@@ -1,0 +1,24 @@
+<div class="container">
+  <div fxLayout fxLayoutAlign="center center" style="padding-top: 10%">
+    <mat-card>
+      <img src="../../../assets/infopharma-logo.png">
+      <form [formGroup]="form" fxLayoutAlign="center" class="full-width" novalidate>
+        <div class="full-width">
+          <mat-form-field>
+            <input matInput placeholder="Login" formControlName="login">
+          </mat-form-field>
+        </div>
+        <div class="full-width">
+          <mat-form-field>
+            <input type="password" matInput placeholder="Senha" formControlName="senha">
+          </mat-form-field>
+        </div>
+        <div class="div-login">
+          <button mat-raised-button color="primary" class="center full-width" [disabled]="form.invalid" (click)="logar()">
+            {{nameBtn}}
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
