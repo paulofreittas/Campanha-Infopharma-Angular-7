@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
@@ -29,9 +29,15 @@ export class AuthenticationService {
     .pipe(map(func => {
         if (func && func.token) {
            localStorage.setItem('infopharmaUser', JSON.stringify(func));
-          // this.currentUserSubject.next(func);
+           this.currentUserSubject.next(func);
         }
     }));
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('infopharmaUser');
+    this.currentUserSubject.next(null);
   }
 
 

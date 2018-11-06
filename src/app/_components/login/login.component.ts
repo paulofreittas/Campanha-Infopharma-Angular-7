@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 
 import { funcionario } from '../../_models';
 import { AuthenticationService } from 'src/app/_services';
+import { error } from 'util';
 
 @Component({
   selector: 'app-login',
@@ -52,11 +53,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl("/dashboard");
         },
         err => {
-          let msg: string = "Tente novamente em instantes.";
-          if (err['status'] == 401) {
-            msg = "Dados inválidos."
-          }
-          this.snackBar.open(msg, "Erro", { duration: 5000 });
+          this.snackBar.open(err, "Erro", { duration: 5000 });
         }
       );
       this.nameBtn = "Entrar";  

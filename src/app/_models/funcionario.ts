@@ -4,4 +4,5 @@ export class funcionario {
     corMarcacao: string;
     login: string;
     senha: string;
+    token: string;
 }
