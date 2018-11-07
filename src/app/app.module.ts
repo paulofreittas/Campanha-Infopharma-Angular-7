@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +14,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { LoginComponent } from './_components';
 import { MenuLateralComponent } from './_components';
 import { DashboardComponent } from './_components';
+import { ListagemDrogariasComponent } from './_components';
 
 
 import {
@@ -23,8 +26,6 @@ import {
   MatSnackBarModule,
   MatCardModule
 } from '@angular/material';
-import { ListagemDrogariasComponent } from './_components/listagem-drogarias/listagem-drogarias.component';
-
 
 
 @NgModule({
@@ -50,6 +51,8 @@ import { ListagemDrogariasComponent } from './_components/listagem-drogarias/lis
     MatSnackBarModule,
     MatCardModule,
     FlexLayoutModule,
+    MatTableModule,
+    MatPaginatorModule,
 
     AppRoutingModule
   ],

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
 import { funcionario } from '../../_models';
 import { AuthenticationService } from 'src/app/_services';
-import { error } from 'util';
 
 @Component({
   selector: 'app-login',

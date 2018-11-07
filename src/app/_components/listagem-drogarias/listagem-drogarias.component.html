@@ -1,3 +1,101 @@
-<p>
-  listagem-drogarias works!
-</p>
+
+<div class="containerX">
+  <div class="container">
+    <div fxLayout="row">
+      <app-menu-lateral></app-menu-lateral>
+    </div>
+  </div>
+  <div class="container" style="padding: 5%">
+    <div fxLayout="column">
+      <mat-table #table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="ID">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              ID
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria">
+              {{ drogaria.id }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="RazaoSocial">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Razão Social
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria">
+              {{ drogaria.razaoSocial }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="NomeFantasia">
+            <mat-header-cell *matHeaderCellDef>
+              Nome Fantasia
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria">
+              {{ drogaria.nomeFantasia }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="CNPJ">
+            <mat-header-cell *matHeaderCellDef>
+              CNPJ
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria">
+              {{ drogaria.cnpj }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="NomeContato">
+            <mat-header-cell *matHeaderCellDef>
+              Contato
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria">
+              {{ drogaria.nomeContato }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Cidade">
+            <mat-header-cell *matHeaderCellDef>
+              Cidade
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria">
+              {{ drogaria.cidade }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Estado">
+            <mat-header-cell *matHeaderCellDef>
+              Estado
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria">
+              {{ drogaria.estado }}
+            </mat-cell>
+          </ng-container>
+      
+          <!-- <ng-container matColumnDef="acao">
+            <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
+            <mat-cell *matCellDef="let lancamento">
+              <a routerLink="{{ '/admin/atualizacao/' + lancamento.id }}"
+                ><mat-icon matTooltip="Editar lançamento">create</mat-icon></a>
+              <a (click)="removerDialog(lancamento.id)" 
+                style="cursor: pointer"><mat-icon matTooltip="Remover lançamento">clear</mat-icon></a>
+            </mat-cell>
+          </ng-container> -->
+      
+        <mat-header-row 
+          *matHeaderRowDef="colunas"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+      </mat-table>
+      
+      <mat-paginator 
+        [length]="totalDrogarias"
+        [pageSize]="25"
+        (page)="paginar($event)">
+      </mat-paginator>
+      
+    </div>
+  </div>
+</div>
+
+
+

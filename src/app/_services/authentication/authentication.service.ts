@@ -21,7 +21,9 @@ export class AuthenticationService {
   }
 
   public get currentUserValue(): funcionario {
-    return this.currentUserSubject.value;
+    if (localStorage['infopharmaUser'])
+      return JSON.parse(localStorage.getItem('infopharmaUser'));
+    return null;
   }
 
   logar(login: string, senha: string): Observable<any> {
