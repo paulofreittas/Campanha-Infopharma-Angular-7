@@ -23,6 +23,7 @@ import {
   MatSnackBarModule,
   MatCardModule
 } from '@angular/material';
+import { ListagemDrogariasComponent } from './_components/listagem-drogarias/listagem-drogarias.component';
 
 
 
@@ -31,7 +32,8 @@ import {
     AppComponent,
     LoginComponent,
     MenuLateralComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListagemDrogariasComponent
   ],
   imports: [
     BrowserModule,
