@@ -1,0 +1,25 @@
+
+
+.list-table {
+    padding-top: 1%;
+    padding-right: 5%;
+}
+
+
+mat-cell, mat-footer-cell, mat-header-cell {
+    display: grid;
+}
+
+.mat-paginator {
+    color: black;
+    font-weight: bold;
+    background: #DCDCDC;
+}
+
+.mat-paginator-navigation-previous mat-icon-button {
+    color: black;
+}
+
+.mat-footer-row, mat-header-row {
+    background: #DCDCDC;
+}

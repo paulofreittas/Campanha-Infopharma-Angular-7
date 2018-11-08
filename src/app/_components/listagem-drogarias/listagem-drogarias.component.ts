@@ -37,8 +37,13 @@ export class ListagemDrogariasComponent implements OnInit {
     this.exibirDrogarias();
   }
 
+  paginar(pageEvent: PageEvent) {
+    this.pagina = pageEvent.pageIndex;
+    this.exibirDrogarias();
+  }
+
   exibirDrogarias() {
-    this.drogService.listarTodasDrogarias()
+    this.drogService.listarTodasDrogarias(this.pagina)
     .subscribe(
       data => {
         this.totalDrogarias = data.numeroResultados;

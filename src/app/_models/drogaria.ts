@@ -1,3 +1,5 @@
+import { funcionario } from "./funcionario";
+
 export class drogaria {
     id: number;
     razaoSocial: string;
@@ -6,4 +8,6 @@ export class drogaria {
     nomeContato: string;
     cidade: string;
     estado: string;
+    funcionarioIdFk: number;
+    funcionario: funcionario
 }

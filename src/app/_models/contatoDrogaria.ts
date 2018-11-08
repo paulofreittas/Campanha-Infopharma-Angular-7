@@ -1,6 +1,6 @@
 export class contatoDrogaria {
+    id:number;
     drogariaIdFk: number;
-    funcionarioIdFk: number;
     dataUltimaAlteracao: Date;
     observacao: string;
     status: number;
