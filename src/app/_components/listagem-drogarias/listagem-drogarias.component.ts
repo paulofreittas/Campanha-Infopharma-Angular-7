@@ -13,6 +13,13 @@ import {
 
 import { DrogariaService } from '../../_services';
 import { drogaria } from '../../_models';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
+
+export interface Estado {
+  abreviacao: string;
+}
 
 @Component({
   selector: 'app-listagem-drogarias',
@@ -22,8 +29,40 @@ import { drogaria } from '../../_models';
 export class ListagemDrogariasComponent implements OnInit {
 
   dataSource: MatTableDataSource<drogaria>;
-  colunas: string[] = ['ID', 'RazaoSocial', 'NomeFantasia', 'CNPJ', 'NomeContato', 'Cidade', 'Estado'];
+  colunas: string[] = ['ID', 'RazaoSocial', 'NomeFantasia', 'CNPJ', 'NomeContato', 'Cidade', 'Estado', 'Acoes'];
   totalDrogarias: number;
+
+  myControl = new FormControl();
+  options: Estado[] = [
+    {abreviacao: 'AC'},
+    {abreviacao: 'AL'},
+    {abreviacao: 'AP'},
+    {abreviacao: 'AM'},
+    {abreviacao: 'BA'},
+    {abreviacao: 'CE'},
+    {abreviacao: 'DF'},
+    {abreviacao: 'ES'},
+    {abreviacao: 'GO'},
+    {abreviacao: 'MA'},
+    {abreviacao: 'MT'},
+    {abreviacao: 'MS'},
+    {abreviacao: 'MG'},
+    {abreviacao: 'PA'},
+    {abreviacao: 'PB'},
+    {abreviacao: 'PR'},
+    {abreviacao: 'PE'},
+    {abreviacao: 'PI'},
+    {abreviacao: 'RJ'},
+    {abreviacao: 'RN'},
+    {abreviacao: 'RS'},
+    {abreviacao: 'RO'},
+    {abreviacao: 'RR'},
+    {abreviacao: 'SC'},
+    {abreviacao: 'SP'},
+    {abreviacao: 'SE'},
+    {abreviacao: 'TO'},
+  ];
+  filteredOptions: Observable<Estado[]>;
 
   @ViewChild(MatSelect) matSelect: MatSelect;
 
@@ -33,8 +72,24 @@ export class ListagemDrogariasComponent implements OnInit {
 
   ngOnInit() {
     this.pagina = 0;
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith<string | Estado>(''),
+        map(value => typeof value === 'string' ? value : value.abreviacao),
+        map(name => name ? this._filter(name) : this.options.slice())
+      );
 
     this.exibirDrogarias();
+  }
+
+  displayFn(estado?: Estado): string | undefined {
+    return estado ? estado.abreviacao : undefined;
+  }
+
+  private _filter(estado: string): Estado[] {
+    const filterValue = estado.toLowerCase();
+
+    return this.options.filter(option => option.abreviacao.toLowerCase().indexOf(filterValue) === 0);
   }
 
   paginar(pageEvent: PageEvent) {

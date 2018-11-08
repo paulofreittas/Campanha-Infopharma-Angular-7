@@ -6,6 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +28,9 @@ import {
   MatTooltipModule,
   MatIconModule,
   MatSnackBarModule,
-  MatCardModule
+  MatCardModule,
+  MatSelectModule,
+  MatCheckboxModule,
 } from '@angular/material';
 
 
@@ -53,6 +59,12 @@ import {
     FlexLayoutModule,
     MatTableModule,
     MatPaginatorModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatAutocompleteModule,
+    FormsModule,
+    MatCheckboxModule,
 
     AppRoutingModule
   ],

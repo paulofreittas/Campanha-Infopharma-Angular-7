@@ -1,4 +1,16 @@
 
+* {
+    z-index: initial;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.seach-input {
+    padding-right: 5%;
+    margin-top: 3%;
+}
 
 .list-table {
     padding-top: 1%;
@@ -22,4 +34,58 @@ mat-cell, mat-footer-cell, mat-header-cell {
 
 .mat-footer-row, mat-header-row {
     background: #DCDCDC;
+}
+
+h3 {
+   color: #295baa;
+   -webkit-text-shadow: 0 .1rem .9rem rgba(0,0,0,.3);
+    text-shadow: 0 0.1rem 0.9rem rgba(0,0,0,.3);
+}
+
+.acoes {
+    display: flex !important;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.mat-cell:last-of-type, mat-footer-cell:last-of-type, mat-header-cell:last-of-type {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.mat-cell:first-of-type, .mat-footer-cell:first-of-type, .mat-header-cell:first-of-type {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.id-table {
+    max-width: 100px;
+}
+
+.acoes-table {
+    max-width: 100px;
+}
+
+.estado-table {
+    max-width: 100px;
+}
+
+.cnpj-table {
+    max-width: 150px;
+}
+
+.cidade-table {
+    max-width: 200px;
+}
+
+.contato-table {
+    max-width: 250px;
+}
+
+.rs-table {
+    min-width: 100px;
+}
+
+.container-search {
+    margin-right: 6%;
 }
