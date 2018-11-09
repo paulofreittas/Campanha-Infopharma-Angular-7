@@ -19,6 +19,8 @@ import { LoginComponent } from './_components';
 import { MenuLateralComponent } from './_components';
 import { DashboardComponent } from './_components';
 import { ListagemDrogariasComponent } from './_components';
+import { FooterComponent } from './_components';
+import { VincularFuncionarioComponent } from './_components';
 
 
 import {
@@ -31,6 +33,9 @@ import {
   MatCardModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatDialog,
+  MatDialogRef,
+  MatDialogModule,
 } from '@angular/material';
 
 
@@ -40,7 +45,9 @@ import {
     LoginComponent,
     MenuLateralComponent,
     DashboardComponent,
-    ListagemDrogariasComponent
+    ListagemDrogariasComponent,
+    FooterComponent,
+    VincularFuncionarioComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +72,9 @@ import {
     MatAutocompleteModule,
     FormsModule,
     MatCheckboxModule,
+    MatDialogModule,
+    MatDialog,
+    MatDialogRef,
 
     AppRoutingModule
   ],

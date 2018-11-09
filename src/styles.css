@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Quicksand', sans-serif !important; background-color: #eff2f5; padding-left: 90px;}
+
+#wrapper{
+    min-height: 100%;
+    position: relative;
+}
+
+.containerX {
+    padding-bottom: 10%;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { 
   MatSelect, 
@@ -13,12 +13,20 @@ import {
 
 import { DrogariaService } from '../../_services';
 import { drogaria } from '../../_models';
-import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { startWith, map } from 'rxjs/operators';
+import { VincularFuncionarioComponent } from '../vincular-funcionario/vincular-funcionario.component';
+// import { Observable } from 'rxjs';
+// import { FormControl } from '@angular/forms';
+// import { startWith, map } from 'rxjs/operators';
 
-export interface Estado {
-  abreviacao: string;
+// export interface Estado {
+//   abreviacao: string;
+// }
+
+export interface DadosDrogaria {
+  id: string;
+  cnpj: string;
+  nomeFantasia: string;
+  contato: string;
 }
 
 @Component({
@@ -32,64 +40,78 @@ export class ListagemDrogariasComponent implements OnInit {
   colunas: string[] = ['ID', 'RazaoSocial', 'NomeFantasia', 'CNPJ', 'NomeContato', 'Cidade', 'Estado', 'Acoes'];
   totalDrogarias: number;
 
-  myControl = new FormControl();
-  options: Estado[] = [
-    {abreviacao: 'AC'},
-    {abreviacao: 'AL'},
-    {abreviacao: 'AP'},
-    {abreviacao: 'AM'},
-    {abreviacao: 'BA'},
-    {abreviacao: 'CE'},
-    {abreviacao: 'DF'},
-    {abreviacao: 'ES'},
-    {abreviacao: 'GO'},
-    {abreviacao: 'MA'},
-    {abreviacao: 'MT'},
-    {abreviacao: 'MS'},
-    {abreviacao: 'MG'},
-    {abreviacao: 'PA'},
-    {abreviacao: 'PB'},
-    {abreviacao: 'PR'},
-    {abreviacao: 'PE'},
-    {abreviacao: 'PI'},
-    {abreviacao: 'RJ'},
-    {abreviacao: 'RN'},
-    {abreviacao: 'RS'},
-    {abreviacao: 'RO'},
-    {abreviacao: 'RR'},
-    {abreviacao: 'SC'},
-    {abreviacao: 'SP'},
-    {abreviacao: 'SE'},
-    {abreviacao: 'TO'},
-  ];
-  filteredOptions: Observable<Estado[]>;
+  // myControl = new FormControl();
+  // options: Estado[] = [
+  //   {abreviacao: 'AC'},
+  //   {abreviacao: 'AL'},
+  //   {abreviacao: 'AP'},
+  //   {abreviacao: 'AM'},
+  //   {abreviacao: 'BA'},
+  //   {abreviacao: 'CE'},
+  //   {abreviacao: 'DF'},
+  //   {abreviacao: 'ES'},
+  //   {abreviacao: 'GO'},
+  //   {abreviacao: 'MA'},
+  //   {abreviacao: 'MT'},
+  //   {abreviacao: 'MS'},
+  //   {abreviacao: 'MG'},
+  //   {abreviacao: 'PA'},
+  //   {abreviacao: 'PB'},
+  //   {abreviacao: 'PR'},
+  //   {abreviacao: 'PE'},
+  //   {abreviacao: 'PI'},
+  //   {abreviacao: 'RJ'},
+  //   {abreviacao: 'RN'},
+  //   {abreviacao: 'RS'},
+  //   {abreviacao: 'RO'},
+  //   {abreviacao: 'RR'},
+  //   {abreviacao: 'SC'},
+  //   {abreviacao: 'SP'},
+  //   {abreviacao: 'SE'},
+  //   {abreviacao: 'TO'},
+  // ];
+  // filteredOptions: Observable<Estado[]>;
 
-  @ViewChild(MatSelect) matSelect: MatSelect;
+  //@ViewChild(MatSelect) matSelect: MatSelect;
 
   private pagina: number;
+  private search: string;
+  private semFuncVinculado: boolean;
 
-  constructor(private drogService: DrogariaService) { }
+  constructor(private drogService: DrogariaService, public vincularFuncionarioDialog: MatDialog) { }
 
   ngOnInit() {
     this.pagina = 0;
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith<string | Estado>(''),
-        map(value => typeof value === 'string' ? value : value.abreviacao),
-        map(name => name ? this._filter(name) : this.options.slice())
-      );
+    this.search = "";
+    this.semFuncVinculado = false;
+    // this.filteredOptions = this.myControl.valueChanges
+    //   .pipe(
+    //     startWith<string | Estado>(''),
+    //     map(value => typeof value === 'string' ? value : value.abreviacao),
+    //     map(name => name ? this._filter(name) : this.options.slice())
+    //   );
 
     this.exibirDrogarias();
   }
 
-  displayFn(estado?: Estado): string | undefined {
-    return estado ? estado.abreviacao : undefined;
-  }
+  // displayFn(estado?: Estado): string | undefined {
+  //   return estado ? estado.abreviacao : undefined;
+  // }
 
-  private _filter(estado: string): Estado[] {
-    const filterValue = estado.toLowerCase();
+  // private _filter(estado: string): Estado[] {
+  //   const filterValue = estado.toLowerCase();
 
-    return this.options.filter(option => option.abreviacao.toLowerCase().indexOf(filterValue) === 0);
+  //   return this.options.filter(option => option.abreviacao.toLowerCase().indexOf(filterValue) === 0);
+  // }
+
+  openDialog(drogariaId: string, cnpj: string, nomeFantasia: string, contato: string): void {
+    const dialogRef = this.vincularFuncionarioDialog.open(VincularFuncionarioDialog, {
+      data: { id: drogariaId, cnpj: cnpj, nomeFantasia: nomeFantasia, contato: contato }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Resultado');
+    })
   }
 
   paginar(pageEvent: PageEvent) {
@@ -98,7 +120,7 @@ export class ListagemDrogariasComponent implements OnInit {
   }
 
   exibirDrogarias() {
-    this.drogService.listarTodasDrogarias(this.pagina)
+    this.drogService.listarDrogarias(this.search, this.semFuncVinculado, this.pagina)
     .subscribe(
       data => {
         this.totalDrogarias = data.numeroResultados;
@@ -109,6 +131,47 @@ export class ListagemDrogariasComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+
+  onKey(value: string) {
+    if (value.length >= 3)
+    {
+      this.search = value;
+      this.exibirDrogarias();
+    }
+    else if (value.length == 0)
+    {
+      this.search = "";
+      this.exibirDrogarias();
+    } 
+  }
+
+  funcionarioVinculado($event)
+  {
+    this.semFuncVinculado = $event.checked;
+    this.exibirDrogarias();
+  }
+
+}
+
+@Component({
+  selector: 'app-vincular-funcionario',
+  templateUrl: `<div mat-dialog-content>
+  <p>Deseja vincular seu contato com essa drogaria?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.nomeFantasia">
+  </mat-form-field>
+</div>`,
+  styleUrls: ['./vincular-funcionario.component.css']
+})
+export class VincularFuncionarioDialog {
+
+  constructor(public dialogRef: MatDialogRef<VincularFuncionarioDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DadosDrogaria) { }
+
+
+  onClose(): void {
+    this.dialogRef.close();
   }
 
 }

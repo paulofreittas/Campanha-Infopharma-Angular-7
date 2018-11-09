@@ -15,7 +15,7 @@ export class DrogariaService {
 
   constructor(private http: HttpClient) { }
 
-  listarTodasDrogarias(pagina: number) : Observable<any> {
-    return this.http.get(env.baseApiUrl + this.PATH + "?page=" + pagina);
+  listarDrogarias(search: string, funcVinculado: boolean, pagina: number) : Observable<any> {
+    return this.http.get(env.baseApiUrl + this.PATH +  "?search=" + search + "&semFuncVinculado=" + funcVinculado + "&page=" + pagina);
   }
 }
