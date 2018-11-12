@@ -3,6 +3,10 @@
     z-index: initial;
 }
 
+.acoes-btns {
+    cursor: pointer;
+}
+
 .full-width {
     width: 100%;
 }
@@ -40,6 +44,7 @@ h3 {
    color: #295baa;
    -webkit-text-shadow: 0 .1rem .9rem rgba(0,0,0,.3);
     text-shadow: 0 0.1rem 0.9rem rgba(0,0,0,.3);
+    font-size: 26px;
 }
 
 .acoes {

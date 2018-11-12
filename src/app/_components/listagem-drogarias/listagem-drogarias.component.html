@@ -97,7 +97,7 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="acoes acoes-table" fxLayoutAlign="center">
                 <div class="acoes-btns">
-                    <a style="margin: 5px;" *ngIf="drogaria.funcionario == null" (click)="openDialog(drogaria.id, drogaria.cnpj, drogaria.nomeFantasia, drogaria.nomeContato)"><mat-icon matTooltip="Marcar cliente">check_circle_outline</mat-icon></a>
+                    <a style="margin: 5px;" *ngIf="drogaria.funcionario == null" (click)="openDialog(drogaria.id, drogaria.cnpj, drogaria.nomeFantasia, drogaria.nomeContato)"><mat-icon matTooltip="Selecionar cliente">check_circle_outline</mat-icon></a>
                     <a style="cursor: pointer;margin: 5px;" *ngIf="drogaria.funcionario != null"><mat-icon matTooltip="Histórico">history</mat-icon></a>
                 </div>
               </mat-cell>

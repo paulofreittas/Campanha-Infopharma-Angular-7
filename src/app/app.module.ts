@@ -33,8 +33,6 @@ import {
   MatCardModule,
   MatSelectModule,
   MatCheckboxModule,
-  MatDialog,
-  MatDialogRef,
   MatDialogModule,
 } from '@angular/material';
 
@@ -47,7 +45,7 @@ import {
     DashboardComponent,
     ListagemDrogariasComponent,
     FooterComponent,
-    VincularFuncionarioComponent
+    VincularFuncionarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,10 +71,11 @@ import {
     FormsModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatDialog,
-    MatDialogRef,
 
     AppRoutingModule
+  ],
+  entryComponents: [
+    VincularFuncionarioComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

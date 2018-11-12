@@ -105,7 +105,7 @@ export class ListagemDrogariasComponent implements OnInit {
   // }
 
   openDialog(drogariaId: string, cnpj: string, nomeFantasia: string, contato: string): void {
-    const dialogRef = this.vincularFuncionarioDialog.open(VincularFuncionarioDialog, {
+    const dialogRef = this.vincularFuncionarioDialog.open(VincularFuncionarioComponent, {
       data: { id: drogariaId, cnpj: cnpj, nomeFantasia: nomeFantasia, contato: contato }
     });
 
@@ -150,28 +150,6 @@ export class ListagemDrogariasComponent implements OnInit {
   {
     this.semFuncVinculado = $event.checked;
     this.exibirDrogarias();
-  }
-
-}
-
-@Component({
-  selector: 'app-vincular-funcionario',
-  templateUrl: `<div mat-dialog-content>
-  <p>Deseja vincular seu contato com essa drogaria?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.nomeFantasia">
-  </mat-form-field>
-</div>`,
-  styleUrls: ['./vincular-funcionario.component.css']
-})
-export class VincularFuncionarioDialog {
-
-  constructor(public dialogRef: MatDialogRef<VincularFuncionarioDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DadosDrogaria) { }
-
-
-  onClose(): void {
-    this.dialogRef.close();
   }
 
 }
