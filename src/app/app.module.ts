@@ -34,6 +34,7 @@ import {
   MatSelectModule,
   MatCheckboxModule,
   MatDialogModule,
+  MatDatepickerModule,
 } from '@angular/material';
 
 
@@ -71,6 +72,7 @@ import {
     FormsModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatDatepickerModule,
 
     AppRoutingModule
   ],

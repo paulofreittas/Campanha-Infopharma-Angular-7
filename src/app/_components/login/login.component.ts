@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
   nameBtn: string;
+  hide = true;
 
   constructor(
     private fb: FormBuilder,

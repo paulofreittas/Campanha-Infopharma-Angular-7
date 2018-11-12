@@ -12,8 +12,9 @@
       <mat-grid-list cols="12" rowHeight="100px">
           <mat-grid-tile [colspan]="9" [rowspan]="1">
               <div class="seach-input" class="full-width">
-              <mat-form-field class="full-width">
-                  <input #search matInput placeholder="Pesquisa" (input)="onKey(search.value)">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Pesquisa</mat-label>
+                  <input #search matInput (input)="onKey(search.value)">
               </mat-form-field>
             </div>
           </mat-grid-tile>

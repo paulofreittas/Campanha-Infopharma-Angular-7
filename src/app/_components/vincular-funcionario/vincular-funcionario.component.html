@@ -1,6 +1,24 @@
 <div mat-dialog-content>
     <p>Deseja vincular seu contato com essa drogaria?</p>
+    <mat-form-field style="width: 50%;" appearance="outline">
+      <input matInput [value]="dataAtual" disabled>
+    </mat-form-field>
+    <mat-form-field style="width: 50%;" appearance="outline">
+      <input matInput [(ngModel)]="data.cnpj" disabled>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <input matInput [(ngModel)]="data.nomeFantasia" disabled>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Observação</mat-label>
+      <textarea matInput #obs placeholder="Textarea" maxlength="150"></textarea>
+      <mat-hint align="end">{{obs.value?.length || 0}}/150</mat-hint>
+    </mat-form-field>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.nomeFantasia">
+        <mat-select placeholder="Favorite food">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
     </mat-form-field>
 </div>
