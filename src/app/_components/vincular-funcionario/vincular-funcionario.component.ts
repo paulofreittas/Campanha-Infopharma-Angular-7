@@ -4,7 +4,7 @@ import { DadosDrogaria } from '../listagem-drogarias';
 
 import * as moment from 'moment';
 
-export interface TipoContrato {
+export interface Proposta {
   value: number;
   viewValue: string;
 }
@@ -16,11 +16,11 @@ export interface TipoContrato {
 })
 export class VincularFuncionarioComponent implements OnInit {
 
-  // tipoContrato: Food[] = [
-  //   {value: 'steak-0', viewValue: 'Steak'},
-  //   {value: 'pizza-1', viewValue: 'Pizza'},
-  //   {value: 'tacos-2', viewValue: 'Tacos'}
-  // ];
+  proposta: Proposta[] = [
+    {value: 1, viewValue: 'Sim Multi'},
+    {value: 2, viewValue: 'PBM'},
+    {value: 3, viewValue: 'Sim Multi + PBM'}
+  ];
 
   private dataAtual: string;
 
@@ -34,5 +34,7 @@ export class VincularFuncionarioComponent implements OnInit {
   onClose(): void {
     this.dialogRef.close();
   }
+
+  
 
 }

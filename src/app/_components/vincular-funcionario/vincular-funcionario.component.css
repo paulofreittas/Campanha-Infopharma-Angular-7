@@ -3,3 +3,15 @@
 .full-width {
     width: 100%;
 }
+
+p { 
+    margin-bottom: 3%;
+    font-weight: bold;
+}
+
+.btn-vincular {
+    width: 92%; 
+    margin-left: 2%; 
+    text-align: center; 
+    margin-bottom: 2%;
+}
