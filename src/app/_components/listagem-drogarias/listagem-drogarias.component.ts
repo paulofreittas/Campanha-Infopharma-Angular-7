@@ -104,13 +104,14 @@ export class ListagemDrogariasComponent implements OnInit {
   //   return this.options.filter(option => option.abreviacao.toLowerCase().indexOf(filterValue) === 0);
   // }
 
-  openDialog(drogariaId: string, cnpj: string, nomeFantasia: string, contato: string): void {
+  openDialog(drog: drogaria): void {
     const dialogRef = this.vincularFuncionarioDialog.open(VincularFuncionarioComponent, {
-      data: { id: drogariaId, cnpj: cnpj, nomeFantasia: nomeFantasia, contato: contato }
+      data: { drog }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Resultado');
+      if (result == true)
+        this.exibirDrogarias();
     })
   }
 

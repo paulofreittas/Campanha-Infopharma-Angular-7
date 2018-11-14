@@ -9,5 +9,5 @@ export class drogaria {
     cidade: string;
     estado: string;
     funcionarioIdFk: number;
-    funcionario: funcionario
+    funcionario: funcionario;
 }

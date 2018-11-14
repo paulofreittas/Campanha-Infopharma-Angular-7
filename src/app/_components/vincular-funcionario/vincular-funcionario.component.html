@@ -1,18 +1,27 @@
 <div mat-dialog-content>
     <p>Deseja vincular seu contato com essa drogaria?</p>
-    <mat-form-field style="width: 45%; margin-left: 2%;" appearance="outline">
+    <mat-form-field style="width: 28%; margin-left: 2%;" appearance="outline">
       <mat-label>Data</mat-label>
       <input matInput [value]="dataAtual" disabled>
     </mat-form-field>
 
-    <mat-form-field style="width: 45%; margin-left: 2%;" appearance="outline">
+    <mat-form-field style="width: 30%; margin-left: 2%;" appearance="outline">
       <mat-label>CNPJ</mat-label>
-      <input matInput [(ngModel)]="data.cnpj" disabled>
+      <input matInput [(ngModel)]="data.drog.cnpj" disabled>
+    </mat-form-field>
+
+    <mat-form-field style="width: 30%; margin-left: 2%;" appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select placeholder="Status" #stat>
+        <mat-option *ngFor="let stat of status" [value]="stat.value">
+          {{stat.viewValue}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field style="width: 45%; margin-left: 2%;" appearance="outline">
       <mat-label>Nome Fantasia</mat-label>
-      <input matInput [(ngModel)]="data.nomeFantasia" disabled>
+      <input matInput [(ngModel)]="data.drog.nomeFantasia" disabled>
     </mat-form-field>
 
     <mat-form-field style="width: 45%; margin-left: 2%;" appearance="outline">
@@ -26,12 +35,17 @@
 
     <mat-form-field style="width: 92%; margin-left: 2%;" appearance="outline">
       <mat-label>Observação</mat-label>
-      <textarea matInput #obs placeholder="Textarea" maxlength="250" rows="4"></textarea>
+      <textarea matInput #obs placeholder="Observação" maxlength="250" rows="4"></textarea>
       <mat-hint align="end">{{obs.value?.length || 0}}/250</mat-hint>
     </mat-form-field>
 
     <div class="btn-vincular center">
-        <button mat-raised-button color="primary" class="center" style="margin-right: 2%;" [disabled]= "prop.value == null">
+        <button mat-raised-button 
+                color="primary" 
+                class="center" 
+                style="margin-right: 2%;" 
+                [disabled]= "(prop.value == null) || (stat.value == null)"
+                (click)="vincularFuncionario(data.drog, prop.value, stat.value, obs.value)">
             Vincular
         </button>
         <button mat-raised-button class="center" (click)="onClose()">
