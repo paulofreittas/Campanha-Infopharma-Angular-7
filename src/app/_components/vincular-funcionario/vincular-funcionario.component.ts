@@ -42,7 +42,7 @@ export class VincularFuncionarioComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<VincularFuncionarioComponent>,
               @Inject(MAT_DIALOG_DATA) public data: drogaria, 
               private contatoDrogariaService : ContatoDrogariaService,
-              private snackBar: MatSnackBar,) { }
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataAtual = moment().format('DD/MM/YYYY');

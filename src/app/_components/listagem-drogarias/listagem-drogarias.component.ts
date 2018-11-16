@@ -8,12 +8,14 @@ import {
   MatDialogRef, 
   MAT_DIALOG_DATA,
   PageEvent,
-  Sort
+  Sort,
+  MatDialogConfig
 } from '@angular/material';
 
 import { DrogariaService } from '../../_services';
 import { drogaria } from '../../_models';
 import { VincularFuncionarioComponent } from '../vincular-funcionario/vincular-funcionario.component';
+import { HistoricoListaComponent } from '../historico-lista';
 // import { Observable } from 'rxjs';
 // import { FormControl } from '@angular/forms';
 // import { startWith, map } from 'rxjs/operators';
@@ -78,7 +80,7 @@ export class ListagemDrogariasComponent implements OnInit {
   private search: string;
   private semFuncVinculado: boolean;
 
-  constructor(private drogService: DrogariaService, public vincularFuncionarioDialog: MatDialog) { }
+  constructor(private drogService: DrogariaService, public vincularFuncionarioDialog: MatDialog, public historicoListaDialog: MatDialog) { }
 
   ngOnInit() {
     this.pagina = 0;
@@ -104,7 +106,7 @@ export class ListagemDrogariasComponent implements OnInit {
   //   return this.options.filter(option => option.abreviacao.toLowerCase().indexOf(filterValue) === 0);
   // }
 
-  openDialog(drog: drogaria): void {
+  openVincularFuncionarioDialog(drog: drogaria): void {
     const dialogRef = this.vincularFuncionarioDialog.open(VincularFuncionarioComponent, {
       data: { drog }
     });
@@ -112,6 +114,18 @@ export class ListagemDrogariasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result == true)
         this.exibirDrogarias();
+    })
+  }
+
+  openHistoricoDialog(drog: drogaria): void {
+    const dialogRef = this.historicoListaDialog.open(HistoricoListaComponent, {
+      data: { drog },
+      minWidth: 1000
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    //  if (result == true)
+    //    this.exibirDrogarias();
     })
   }
 

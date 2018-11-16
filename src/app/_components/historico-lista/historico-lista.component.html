@@ -1,0 +1,75 @@
+<div mat-dialog-content>
+  <div class="container list-table">
+    <div fxLayout="column" style="text-align: center;">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="ID">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            ID
+          </mat-header-cell>
+          <mat-cell class="id-table">
+            1
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="NomeFantasia">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            Nome Fantasia
+          </mat-header-cell>
+          <mat-cell class="id-table">
+            fasdfasd
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Funcionario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+              Funcionario
+            </mat-header-cell>
+            <mat-cell class="id-table">
+              65465654
+            </mat-cell>
+          </ng-container>
+
+
+        <ng-container matColumnDef="Data">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            Data
+          </mat-header-cell>
+          <mat-cell class="id-table">
+            15/06/2018
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="TipoProposta">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            Tipo Proposta
+          </mat-header-cell>
+          <mat-cell class="id-table">
+            Sim Multi
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            Status
+          </mat-header-cell>
+          <mat-cell class="id-table">
+            Fechado
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Observacao">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            Observação
+          </mat-header-cell>
+          <mat-cell class="id-table">
+            Foi um teste do teste testado
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="colunas">
+        </mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>

@@ -21,6 +21,7 @@ import { DashboardComponent } from './_components';
 import { ListagemDrogariasComponent } from './_components';
 import { FooterComponent } from './_components';
 import { VincularFuncionarioComponent } from './_components';
+import { HistoricoListaComponent } from './_components';
 
 
 import {
@@ -47,6 +48,7 @@ import {
     ListagemDrogariasComponent,
     FooterComponent,
     VincularFuncionarioComponent,
+    HistoricoListaComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +80,7 @@ import {
   ],
   entryComponents: [
     VincularFuncionarioComponent,
+    HistoricoListaComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

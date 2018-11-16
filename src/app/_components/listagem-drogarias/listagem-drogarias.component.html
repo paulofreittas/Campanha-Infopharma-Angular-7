@@ -98,8 +98,8 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="acoes acoes-table" fxLayoutAlign="center">
                 <div class="acoes-btns">
-                    <a style="margin: 5px;" *ngIf="drogaria.funcionario == null" (click)="openDialog(drogaria)"><mat-icon matTooltip="Selecionar cliente">check_circle_outline</mat-icon></a>
-                    <a style="cursor: pointer;margin: 5px;" *ngIf="drogaria.funcionario != null"><mat-icon matTooltip="Histórico">history</mat-icon></a>
+                    <a style="margin: 5px;" *ngIf="drogaria.funcionario == null" (click)="openVincularFuncionarioDialog(drogaria)"><mat-icon matTooltip="Selecionar cliente">check_circle_outline</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;" *ngIf="drogaria.funcionario != null" (click)="openHistoricoDialog(drogaria)"><mat-icon matTooltip="Histórico">history</mat-icon></a>
                 </div>
               </mat-cell>
 
