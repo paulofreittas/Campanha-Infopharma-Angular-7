@@ -12,56 +12,56 @@
         </ng-container>
 
         <ng-container matColumnDef="NomeFantasia">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="nomeFantasia-table">
             Nome Fantasia
           </mat-header-cell>
-          <mat-cell *matCellDef="let cd" class="id-table">
+          <mat-cell *matCellDef="let cd" class="nomeFantasia-table">
             {{ data.drog.nomeFantasia }}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Funcionario">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="funcionario-table">
               Funcionario
             </mat-header-cell>
-            <mat-cell *matCellDef="let cd" class="id-table">
+            <mat-cell *matCellDef="let cd" class="funcionario-table">
               {{ cd.drogaria.funcionario.nome }}
             </mat-cell>
           </ng-container>
 
 
         <ng-container matColumnDef="Data">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="data-table">
             Data
           </mat-header-cell>
-          <mat-cell *matCellDef="let cd" class="id-table">
+          <mat-cell *matCellDef="let cd" class="data-table">
             {{ cd.dataAlteracao | date: 'dd/MM/yyyy HH:mm:ss'}}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="TipoProposta">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="tipoProposta-table">
             Tipo Proposta
           </mat-header-cell>
-          <mat-cell *matCellDef="let cd" class="id-table">
-            {{ cd.tipoProposta }}
+          <mat-cell *matCellDef="let cd" class="tipoProposta-table">
+            {{ cd.tipoProposta | tipoProposta }}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Status">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="status-table">
             Status
           </mat-header-cell>
-          <mat-cell *matCellDef="let cd" class="id-table">
-            {{ cd.status }}
+          <mat-cell *matCellDef="let cd" class="status-table">
+            {{ cd.status | status }}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Observacao">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="observacao-table">
             Observação
           </mat-header-cell>
-          <mat-cell *matCellDef="let cd" class="id-table">
+          <mat-cell *matCellDef="let cd" class="observacao-table">
             {{ cd.observacao }}
           </mat-cell>
         </ng-container>

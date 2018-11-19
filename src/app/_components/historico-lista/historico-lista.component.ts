@@ -14,7 +14,7 @@ export class HistoricoListaComponent implements OnInit {
   colunas: string[] = ['ID', 'NomeFantasia', 'Funcionario', 'Data', 'TipoProposta', 'Status', 'Observacao'];
 
   constructor(public dialogRef: MatDialogRef<HistoricoListaComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: drogaria, 
+              @Inject(MAT_DIALOG_DATA) public data: any, 
               private contatoDrogariaService : ContatoDrogariaService,
               private snackBar: MatSnackBar) { 
                 this.buscarHistorico(data.drog.id)

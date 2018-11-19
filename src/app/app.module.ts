@@ -23,6 +23,9 @@ import { FooterComponent } from './_components';
 import { VincularFuncionarioComponent } from './_components';
 import { HistoricoListaComponent } from './_components';
 
+import { StatusPipe } from './_pipes';
+import { TipoPropostaPipe } from './_pipes';
+
 
 import {
   MatInputModule,
@@ -39,6 +42,7 @@ import {
 } from '@angular/material';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +53,8 @@ import {
     FooterComponent,
     VincularFuncionarioComponent,
     HistoricoListaComponent,
+    StatusPipe,
+    TipoPropostaPipe,
   ],
   imports: [
     BrowserModule,

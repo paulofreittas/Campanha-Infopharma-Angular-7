@@ -3,3 +3,32 @@
 mat-cell, mat-footer-cell, mat-header-cell {
     display: grid;
 }
+
+
+.id-table {
+    max-width: 50px;
+}
+
+.nomeFantasia-table {
+    max-width: 150px;
+}
+
+.funcionario-table {
+    max-width: 100px;
+}
+
+.data-table {
+    max-width: 100px;
+}
+
+.tipoProposta-table {
+    max-width: 100px;
+}
+
+.status-table {
+    max-width: 100px;
+}
+
+.observacao-table {
+    max-width: 250px;
+}
