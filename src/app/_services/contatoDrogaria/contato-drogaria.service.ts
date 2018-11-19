@@ -17,4 +17,8 @@ export class ContatoDrogariaService {
   add(ctDrogaria: contatoDrogaria) : Observable<any> {
     return this.http.post(env.baseApiUrl + this.PATH, ctDrogaria);
   }
+
+  findByDrogariaId(id: number) {
+    return this.http.get(env.baseApiUrl + this.PATH + "?drogariaId=" + id)
+  }
 }

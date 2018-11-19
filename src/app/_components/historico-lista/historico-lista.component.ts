@@ -16,9 +16,23 @@ export class HistoricoListaComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<HistoricoListaComponent>,
               @Inject(MAT_DIALOG_DATA) public data: drogaria, 
               private contatoDrogariaService : ContatoDrogariaService,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar) { 
+                this.buscarHistorico(data.drog.id)
+              }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  buscarHistorico(id: number) {
+    return this.contatoDrogariaService.findByDrogariaId(id)
+    .subscribe(
+      data => {
+        const contatosDrogaria = data as contatoDrogaria[];
+        this.dataSource = new MatTableDataSource<contatoDrogaria>(contatosDrogaria);
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
 }
