@@ -26,10 +26,14 @@ mat-cell, mat-footer-cell, mat-header-cell {
     display: grid;
 }
 
+.mat-header-cell {
+    color: white;
+}
+
 .mat-paginator {
-    color: black;
+    color: white;
     font-weight: bold;
-    background: #DCDCDC;
+    background: #6c8bc7;
 }
 
 .mat-paginator-navigation-previous mat-icon-button {
@@ -37,13 +41,13 @@ mat-cell, mat-footer-cell, mat-header-cell {
 }
 
 .mat-footer-row, mat-header-row {
-    background: #DCDCDC;
+    background: #6c8bc7;
 }
 
 h3 {
    color: #295baa;
-   -webkit-text-shadow: 0 .1rem .9rem rgba(0,0,0,.3);
-    text-shadow: 0 0.1rem 0.9rem rgba(0,0,0,.3);
+   -webkit-text-shadow: 0 .1rem .9rem white;
+    text-shadow: 0 0.1rem 0.9rem white;
     font-size: 26px;
 }
 
