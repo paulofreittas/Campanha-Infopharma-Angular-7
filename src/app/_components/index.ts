@@ -5,5 +5,6 @@ export * from './listagem-drogarias';
 export * from './footer';
 export * from './vincular-funcionario';
 export * from './historico-lista';
+export * from './listagem-historico';
 
 

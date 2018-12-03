@@ -1,0 +1,134 @@
+<div class="containerX">
+  <div class="container">
+    <div fxLayout="row">
+      <app-menu-lateral></app-menu-lateral>
+    </div>
+  </div>
+  <div >
+    <h3>Meu Histórico</h3>
+  </div>
+ 
+  <div class="container-search">
+      <mat-grid-list cols="12" rowHeight="100px">
+          <mat-grid-tile [colspan]="12" [rowspan]="1">
+              <div class="seach-input" class="full-width">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Pesquisa</mat-label>
+                  <input #search matInput (input)="onKey(search.value)">
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>  
+  </div>
+  
+  
+
+  <div class="container list-table">
+    <div fxLayout="column">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="ID">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+              ID
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="id-table">
+              {{ drogaria.id }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="RazaoSocial" >
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="rs-table">
+              Razão Social
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria"  [style.background]="drogaria.funcionario?.corMarcacao" class="rs-table">
+              {{ drogaria.razaoSocial }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="NomeFantasia">
+            <mat-header-cell *matHeaderCellDef>
+              Nome Fantasia
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao">
+              {{ drogaria.nomeFantasia }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="CNPJ">
+            <mat-header-cell *matHeaderCellDef class="cnpj-table">
+              CNPJ
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="cnpj-table">
+              {{ drogaria.cnpj }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="NomeContato">
+            <mat-header-cell *matHeaderCellDef class="contato-table">
+              Contato
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="contato-table">
+              {{ drogaria.nomeContato }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Cidade">
+            <mat-header-cell *matHeaderCellDef class="cidade-table">
+              Cidade
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="cidade-table">
+              {{ drogaria.cidade }}
+            </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="Estado">
+            <mat-header-cell *matHeaderCellDef class="estado-table">
+              Estado
+            </mat-header-cell>
+            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="estado-table">
+              {{ drogaria.estado }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Acoes">
+              <mat-header-cell *matHeaderCellDef class="acoes-table">
+                Ações
+              </mat-header-cell>
+              <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.funcionario?.corMarcacao" class="acoes acoes-table" fxLayoutAlign="center">
+                <div class="acoes-btns">
+                    <a style="margin: 5px;" *ngIf="drogaria.funcionario == null" (click)="openVincularFuncionarioDialog(drogaria)"><mat-icon matTooltip="Selecionar cliente">check_circle_outline</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;" *ngIf="drogaria.funcionario != null" (click)="openHistoricoDialog(drogaria)"><mat-icon matTooltip="Histórico">history</mat-icon></a>
+                </div>
+              </mat-cell>
+
+            </ng-container>
+      
+          <!-- <ng-container matColumnDef="acao">
+            <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
+            <mat-cell *matCellDef="let lancamento">
+              <a routerLink="{{ '/admin/atualizacao/' + lancamento.id }}"
+                ><mat-icon matTooltip="Editar lançamento">create</mat-icon></a>
+              <a (click)="removerDialog(lancamento.id)" 
+                style="cursor: pointer"><mat-icon matTooltip="Remover lançamento">clear</mat-icon></a>
+            </mat-cell>
+          </ng-container> -->
+      
+        <mat-header-row 
+          *matHeaderRowDef="colunas"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+      </mat-table>
+      
+      <mat-paginator 
+        [length]="totalDrogarias"
+        [pageSize]="15"
+        (page)="paginar($event)">
+      </mat-paginator>
+      
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+    <app-footer></app-footer>
+</div>
+
+

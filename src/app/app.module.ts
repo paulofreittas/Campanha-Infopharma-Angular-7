@@ -22,6 +22,7 @@ import { ListagemDrogariasComponent } from './_components';
 import { FooterComponent } from './_components';
 import { VincularFuncionarioComponent } from './_components';
 import { HistoricoListaComponent } from './_components';
+import { ListagemHistoricoComponent } from './_components';
 
 import { StatusPipe } from './_pipes';
 import { TipoPropostaPipe } from './_pipes';
@@ -42,7 +43,6 @@ import {
 } from '@angular/material';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +55,7 @@ import {
     HistoricoListaComponent,
     StatusPipe,
     TipoPropostaPipe,
+    ListagemHistoricoComponent,
   ],
   imports: [
     BrowserModule,
