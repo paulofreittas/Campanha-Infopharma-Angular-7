@@ -21,4 +21,8 @@ export class ContatoDrogariaService {
   findByDrogariaId(id: number) {
     return this.http.get(env.baseApiUrl + this.PATH + "?drogariaId=" + id)
   }
+
+  findByFuncionarioId(id: number) {
+    return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + id)
+  }
 }
