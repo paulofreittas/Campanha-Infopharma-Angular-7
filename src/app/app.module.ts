@@ -21,6 +21,7 @@ import { DashboardComponent } from './_components';
 import { ListagemDrogariasComponent } from './_components';
 import { FooterComponent } from './_components';
 import { VincularFuncionarioComponent } from './_components';
+import { ConfirmacaoExclusaoContatoComponent } from './_components';
 import { HistoricoListaComponent } from './_components';
 import { ListagemHistoricoComponent } from './_components';
 
@@ -56,6 +57,7 @@ import {
     StatusPipe,
     TipoPropostaPipe,
     ListagemHistoricoComponent,
+    ConfirmacaoExclusaoContatoComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +89,7 @@ import {
   ],
   entryComponents: [
     VincularFuncionarioComponent,
+    ConfirmacaoExclusaoContatoComponent,
     HistoricoListaComponent
   ],
   providers: [

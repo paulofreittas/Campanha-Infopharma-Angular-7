@@ -26,14 +26,14 @@
   <div class="container list-table">
     <div fxLayout="column">
       <mat-table #table [dataSource]="dataSource">
-        <ng-container matColumnDef="ID">
+        <ng-container matColumnDef="DataAlteracao">
             <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
-              ID
+              Data Alteração
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" [style.background]="user?.corMarcacao" class="id-table">
-              {{ data.id }}
+            <mat-cell *matCellDef="let data" class="id-table">
+              {{ data.dataAlteracao | date: 'dd/MM/yyyy HH:mm:ss' }}
             </mat-cell>
-          </ng-container>
+        </ng-container>
       
           <!-- <ng-container matColumnDef="RazaoSocial" >
             <mat-header-cell *matHeaderCellDef mat-sort-header class="rs-table">
@@ -48,7 +48,7 @@
             <mat-header-cell *matHeaderCellDef>
               Nome Fantasia
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" [style.background]="user?.corMarcacao">
+            <mat-cell *matCellDef="let data">
               {{ data.drogaria.nomeFantasia }}
             </mat-cell>
           </ng-container>
@@ -57,7 +57,7 @@
             <mat-header-cell *matHeaderCellDef class="cnpj-table">
               CNPJ
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" [style.background]="user?.corMarcacao" class="cnpj-table">
+            <mat-cell *matCellDef="let data" class="cnpj-table">
               {{ data.drogaria.cnpj }}
             </mat-cell>
           </ng-container>
@@ -75,7 +75,7 @@
             <mat-header-cell *matHeaderCellDef class="proposta-table">
               Proposta
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" [style.background]="user?.corMarcacao" class="proposta-table">
+            <mat-cell *matCellDef="let data" class="proposta-table">
               {{ data.tipoProposta }}
             </mat-cell>
           </ng-container>
@@ -93,7 +93,7 @@
             <mat-header-cell *matHeaderCellDef class="situacao-table">
               Situação
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" [style.background]="user?.corMarcacao" class="situacao-table">
+            <mat-cell *matCellDef="let data" class="situacao-table">
               {{ data.status }}
             </mat-cell>
           </ng-container>
@@ -102,7 +102,7 @@
             <mat-header-cell *matHeaderCellDef class="obs-table">
               Última Observação
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" [style.background]="user?.corMarcacao" class="obs-table">
+            <mat-cell *matCellDef="let data" class="obs-table">
               {{ data.observacao }}
             </mat-cell>
           </ng-container>
@@ -111,14 +111,13 @@
               <mat-header-cell *matHeaderCellDef class="acoes-table">
                 Ações
               </mat-header-cell>
-              <mat-cell *matCellDef="let data" [style.background]="drogaria.funcionario?.corMarcacao" class="acoes acoes-table" fxLayoutAlign="center">
+              <mat-cell *matCellDef="let data" class="acoes acoes-table" fxLayoutAlign="center">
                 <div class="acoes-btns">
-                    <a style="margin: 5px;" *ngIf="drogaria.funcionario == null" (click)="openVincularFuncionarioDialog(drogaria)"><mat-icon matTooltip="Selecionar cliente">check_circle_outline</mat-icon></a>
-                    <a style="cursor: pointer;margin: 5px;" *ngIf="drogaria.funcionario != null" (click)="openHistoricoDialog(drogaria)"><mat-icon matTooltip="Histórico">history</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;"><mat-icon matTooltip="Histórico completo">history</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;"><mat-icon matTooltip="Desvincular cliente">cancel</mat-icon></a>
                 </div>
               </mat-cell>
-
-            </ng-container>
+          </ng-container>
       
           <!-- <ng-container matColumnDef="acao">
             <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
@@ -136,7 +135,7 @@
       </mat-table>
       
       <mat-paginator 
-        [length]="totalDrogarias"
+        [length]="totalContatoDrogarias"
         [pageSize]="15"
         (page)="paginar($event)">
       </mat-paginator>

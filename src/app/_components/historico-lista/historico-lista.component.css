@@ -32,3 +32,11 @@ mat-cell, mat-footer-cell, mat-header-cell {
 .observacao-table {
     max-width: 250px;
 }
+
+.acoes-table {
+    max-width: 100px;
+}
+
+.material-icons {
+    font-size: 22px;
+}

@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+  <p>Tem certeza que deseja excluir esse registro de contato?</p>
+ 
+  <div class="center" style="text-align: center;">
+    <button mat-raised-button 
+            class="center" 
+            style="margin: 2%;"
+            (click)="onClose()">
+            Não
+    </button>
+    <button mat-raised-button  
+            color="primary" 
+            class="center" 
+            (click)="excluir()">
+            Sim
+    </button>
+  </div>
+</div>

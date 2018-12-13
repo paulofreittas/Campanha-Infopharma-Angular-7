@@ -68,7 +68,7 @@ export class VincularFuncionarioComponent implements OnInit {
 
     this.contatoDrogariaService.add(ctDrogaria).subscribe(
       data => {
-        this.snackBar.open("Contato registrado com sucesso!", "Sucesso", { duration: 5000 });
+        this.snackBar.open("Contato registrado com sucesso!", "Ok", { duration: 5000 });
         this.registroAlterado = true;
         this.onClose();
       },

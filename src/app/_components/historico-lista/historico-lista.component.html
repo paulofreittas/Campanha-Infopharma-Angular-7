@@ -16,7 +16,7 @@
             Nome Fantasia
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="nomeFantasia-table">
-            {{ data.drog.nomeFantasia }}
+            {{ cd.drogaria.nomeFantasia }}
           </mat-cell>
         </ng-container>
 
@@ -66,10 +66,25 @@
           </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Acoes">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="acoes-table">
+            Ações
+          </mat-header-cell>
+          <mat-cell *matCellDef="let cd" class="acoes-table">
+            <div class="acoes-btns" *ngIf="data.drog.funcionario.id == user.id">
+              <!-- <a style="cursor: pointer;margin: 5px;"><mat-icon matTooltip="Histórico">history</mat-icon></a> -->
+              <a style="cursor: pointer;margin: 5px;" (click)="excluirContatoDrogaria(cd)"><mat-icon matTooltip="Excluir">cancel</mat-icon></a>
+            </div>
+          </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="colunas">
         </mat-header-row>
         <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
       </mat-table>
+      <div class="center" style="margin: 1%;margin-top: 2%" *ngIf="data.drog.funcionario.id == user.id">
+        <button mat-mini-fab matTooltip="Adicionar contato" (click)="openVincularFuncionarioDialog(data.drog)"><mat-icon>add</mat-icon></button>
+      </div>
     </div>
   </div>
 </div>

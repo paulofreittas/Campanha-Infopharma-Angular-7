@@ -18,11 +18,20 @@ export class ContatoDrogariaService {
     return this.http.post(env.baseApiUrl + this.PATH, ctDrogaria);
   }
 
-  findByDrogariaId(id: number) {
+  findByDrogariaId(id: number) : Observable<any> {
     return this.http.get(env.baseApiUrl + this.PATH + "?drogariaId=" + id)
   }
 
-  findByFuncionarioId(id: number) {
-    return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + id)
+  findByFuncionarioId(funcionarioId: number, search: string, page: number) : Observable<any> {
+    if (search == null) {
+      return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + funcionarioId)
+    } 
+    else {
+      return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + funcionarioId + "&search=" + search + "&page=" + page)
+    }
+  }
+
+  delete(id: number) {
+    return this.http.delete(env.baseApiUrl + this.PATH + "/" + id);
   }
 }

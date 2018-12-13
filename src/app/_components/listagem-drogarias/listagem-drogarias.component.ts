@@ -14,8 +14,7 @@ import {
 
 import { DrogariaService } from '../../_services';
 import { drogaria } from '../../_models';
-import { VincularFuncionarioComponent } from '../vincular-funcionario/vincular-funcionario.component';
-import { HistoricoListaComponent } from '../historico-lista';
+import { VincularFuncionarioComponent, HistoricoListaComponent } from '../../_components';
 // import { Observable } from 'rxjs';
 // import { FormControl } from '@angular/forms';
 // import { startWith, map } from 'rxjs/operators';
