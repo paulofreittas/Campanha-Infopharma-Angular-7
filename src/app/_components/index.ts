@@ -7,5 +7,6 @@ export * from './vincular-funcionario';
 export * from './historico-lista';
 export * from './listagem-historico';
 export * from './confirmacao-exclusao-contato';
+export * from './listagem-funcionarios';
 
 

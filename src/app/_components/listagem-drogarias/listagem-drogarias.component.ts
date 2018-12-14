@@ -79,7 +79,9 @@ export class ListagemDrogariasComponent implements OnInit {
   private search: string;
   private semFuncVinculado: boolean;
 
-  constructor(private drogService: DrogariaService, public vincularFuncionarioDialog: MatDialog, public historicoListaDialog: MatDialog) { }
+  constructor(private drogService: DrogariaService, 
+              public vincularFuncionarioDialog: MatDialog, 
+              public historicoListaDialog: MatDialog) { }
 
   ngOnInit() {
     this.pagina = 0;
@@ -123,8 +125,7 @@ export class ListagemDrogariasComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-    //  if (result == true)
-    //    this.exibirDrogarias();
+        this.exibirDrogarias();
     })
   }
 

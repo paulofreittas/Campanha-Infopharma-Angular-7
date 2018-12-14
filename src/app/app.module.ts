@@ -24,6 +24,7 @@ import { VincularFuncionarioComponent } from './_components';
 import { ConfirmacaoExclusaoContatoComponent } from './_components';
 import { HistoricoListaComponent } from './_components';
 import { ListagemHistoricoComponent } from './_components';
+import { ListagemFuncionariosComponent } from './_components';
 
 import { StatusPipe } from './_pipes';
 import { TipoPropostaPipe } from './_pipes';
@@ -58,6 +59,7 @@ import {
     TipoPropostaPipe,
     ListagemHistoricoComponent,
     ConfirmacaoExclusaoContatoComponent,
+    ListagemFuncionariosComponent,
   ],
   imports: [
     BrowserModule,

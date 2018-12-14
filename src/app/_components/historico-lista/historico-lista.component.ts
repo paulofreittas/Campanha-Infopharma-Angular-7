@@ -14,6 +14,7 @@ export class HistoricoListaComponent implements OnInit {
   dataSource: MatTableDataSource<contatoDrogaria>;
   colunas: string[] = ['ID', 'NomeFantasia', 'Funcionario', 'Data', 'TipoProposta', 'Status', 'Observacao', 'Acoes'];
   user : funcionario;
+  func : funcionario;
 
   constructor(public dialogRef: MatDialogRef<HistoricoListaComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, 
@@ -27,6 +28,7 @@ export class HistoricoListaComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authenticationService.currentUserValue;
+
   }
 
   openVincularFuncionarioDialog(drog: drogaria): void {
@@ -44,7 +46,10 @@ export class HistoricoListaComponent implements OnInit {
     return this.contatoDrogariaService.findByDrogariaId(id)
     .subscribe(
       data => {
+        if (data.resultado.length == 0)
+          this.dialogRef.close();
         const contatosDrogaria = data.resultado as contatoDrogaria[];
+        this.func = contatosDrogaria[0].drogaria.funcionario;
         this.dataSource = new MatTableDataSource<contatoDrogaria>(contatosDrogaria);
       },
       err => {
