@@ -25,59 +25,40 @@
 
   <div class="container list-table">
     <div fxLayout="column">
-      <!-- <mat-table #table [dataSource]="dataSource">
-        <ng-container matColumnDef="DataAlteracao">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="ID">
             <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
-              Data Alteração
+              ID
             </mat-header-cell>
             <mat-cell *matCellDef="let data" class="id-table">
-              {{ data.dataAlteracao | date: 'dd/MM/yyyy HH:mm:ss' }}
+              {{ data.id }}
             </mat-cell>
         </ng-container>
       
-          <ng-container matColumnDef="NomeFantasia">
-            <mat-header-cell *matHeaderCellDef>
-              Nome Fantasia
+          <ng-container matColumnDef="Nome">
+            <mat-header-cell *matHeaderCellDef class="nome-table">
+              Nome
             </mat-header-cell>
-            <mat-cell *matCellDef="let data">
-              {{ data.drogaria.nomeFantasia }}
+            <mat-cell *matCellDef="let data" class="nome-table">
+              {{ data.nome }}
             </mat-cell>
           </ng-container>
       
-          <ng-container matColumnDef="CNPJ">
-            <mat-header-cell *matHeaderCellDef class="cnpj-table">
-              CNPJ
+          <ng-container matColumnDef="Login">
+            <mat-header-cell *matHeaderCellDef class="login-table">
+              Login
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="cnpj-table">
-              {{ data.drogaria.cnpj }}
+            <mat-cell *matCellDef="let data" class="login-table">
+              {{ data.login }}
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="Proposta">
-            <mat-header-cell *matHeaderCellDef class="proposta-table">
-              Proposta
+          <ng-container matColumnDef="CorMarcacao">
+            <mat-header-cell *matHeaderCellDef class="cor-table">
+              Cor
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="proposta-table">
-              {{ data.tipoProposta }}
-            </mat-cell>
-          </ng-container>
-
-      
-          <ng-container matColumnDef="Situacao">
-            <mat-header-cell *matHeaderCellDef class="situacao-table">
-              Situação
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="situacao-table">
-              {{ data.status }}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="UltObservacao">
-            <mat-header-cell *matHeaderCellDef class="obs-table">
-              Última Observação
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="obs-table">
-              {{ data.observacao }}
+            <mat-cell *matCellDef="let data" class="cor-table">
+              {{ data.corMarcacao }}
             </mat-cell>
           </ng-container>
 
@@ -87,7 +68,8 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let data" class="acoes acoes-table" fxLayoutAlign="center">
                 <div class="acoes-btns">
-                    <a style="cursor: pointer;margin: 5px;" (click)="openHistoricoDialog(data.drogaria)"><mat-icon matTooltip="Histórico completo">history</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;"><mat-icon matTooltip="Alterar">assignment_ind</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;"><mat-icon matTooltip="Excluir">delete</mat-icon></a>
                 </div>
               </mat-cell>
           </ng-container>
@@ -97,12 +79,6 @@
           *matHeaderRowDef="colunas"></mat-header-row>
           <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
       </mat-table>
-      
-      <mat-paginator 
-        [length]="totalContatoDrogarias"
-        [pageSize]="15"
-        (page)="paginar($event)">
-      </mat-paginator> -->
       
     </div>
   </div>
