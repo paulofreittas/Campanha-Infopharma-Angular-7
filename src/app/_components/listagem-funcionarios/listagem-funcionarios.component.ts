@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { funcionario } from 'src/app/_models';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { FuncionarioService } from '../../_services';
+import { ConfirmacaoExclusaoFuncionarioComponent } from '../confirmacao-exclusao-funcionario';
+import { CadastroFuncionarioComponent } from '..';
 
 @Component({
   selector: 'app-listagem-funcionarios',
@@ -14,12 +16,47 @@ export class ListagemFuncionariosComponent implements OnInit {
   colunas: string[] = ['ID', 'Nome', 'Login', 'CorMarcacao', 'Acoes'];
   private search: string;
 
-  constructor(private funcionarioService : FuncionarioService) { }
+  constructor(private funcionarioService : FuncionarioService,
+              public excluirFuncionarioDialog: MatDialog,
+              public cadastroFuncionarioDialog: MatDialog) { }
 
   ngOnInit() {
     this.search = "";
 
     this.exibirFuncionarios();
+  }
+
+  onKey(value: string) {
+    if (value.length >= 3)
+    {
+      this.search = value;
+      this.exibirFuncionarios();
+    }
+    else if (value.length == 0)
+    {
+      this.search = "";
+      this.exibirFuncionarios();
+    } 
+  }
+
+  openCadastrarFuncionarioDialog(): void {
+    const dialogRef = this.cadastroFuncionarioDialog.open(CadastroFuncionarioComponent, null);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == true)
+        this.exibirFuncionarios();
+    })
+  }
+
+  openExcluirFuncionarioDialog(func: funcionario): void {
+    const dialogRef = this.excluirFuncionarioDialog.open(ConfirmacaoExclusaoFuncionarioComponent, {
+      data: { func }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == true)
+        this.exibirFuncionarios();
+    })
   }
 
   exibirFuncionarios() {

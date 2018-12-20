@@ -25,9 +25,13 @@ import { ConfirmacaoExclusaoContatoComponent } from './_components';
 import { HistoricoListaComponent } from './_components';
 import { ListagemHistoricoComponent } from './_components';
 import { ListagemFuncionariosComponent } from './_components';
+import { ConfirmacaoExclusaoFuncionarioComponent } from './_components';
+import { CadastroFuncionarioComponent } from './_components';
 
 import { StatusPipe } from './_pipes';
 import { TipoPropostaPipe } from './_pipes';
+
+import { MccColorPickerModule } from 'material-community-components';
 
 
 import {
@@ -44,8 +48,6 @@ import {
   MatDatepickerModule,
 } from '@angular/material';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +63,8 @@ import {
     ListagemHistoricoComponent,
     ConfirmacaoExclusaoContatoComponent,
     ListagemFuncionariosComponent,
+    ConfirmacaoExclusaoFuncionarioComponent,
+    CadastroFuncionarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,12 +91,15 @@ import {
     MatCheckboxModule,
     MatDialogModule,
     MatDatepickerModule,
+    MccColorPickerModule,
 
     AppRoutingModule
   ],
   entryComponents: [
     VincularFuncionarioComponent,
     ConfirmacaoExclusaoContatoComponent,
+    ConfirmacaoExclusaoFuncionarioComponent,
+    CadastroFuncionarioComponent,
     HistoricoListaComponent
   ],
   providers: [

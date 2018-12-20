@@ -8,5 +8,6 @@ export * from './historico-lista';
 export * from './listagem-historico';
 export * from './confirmacao-exclusao-contato';
 export * from './listagem-funcionarios';
-
+export * from './confirmacao-exclusao-funcionario';
+export * from './cadastro-funcionario';
 

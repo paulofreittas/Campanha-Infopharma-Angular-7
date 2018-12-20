@@ -1,0 +1,42 @@
+<div mat-dialog-content>
+    
+    <form [formGroup]="form" fxLayoutAlign="center" class="full-width" novalidate>
+        <div class="full-width">
+            <mat-form-field appearance="outline">
+              <mat-label>Nome</mat-label>
+              <input matInput formControlName="nome">
+            </mat-form-field>
+          </div>
+        <div class="full-width">
+          <mat-form-field appearance="outline">
+            <mat-label>Login</mat-label>
+            <input matInput formControlName="login">
+          </mat-form-field>
+        </div>
+        <div class="full-width">
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="senha" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+        </div>
+        <mcc-color-picker mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger">
+          </mcc-color-picker>
+      
+          <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form)">
+            <mat-form-field>
+              <input matInput mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="color" />
+            </mat-form-field>
+      
+            <button type="submit" mat-raised-button color="primary">Submit
+              <small>(look the console)</small>
+            </button>
+          </form>
+        <div class="div-login">
+          <button mat-raised-button color="primary" class="center full-width" [disabled]="form.invalid" (click)="logar()">
+            Cadastrar
+          </button>
+        </div>
+      </form>
+    
+</div>

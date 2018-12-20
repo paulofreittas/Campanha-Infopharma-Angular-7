@@ -57,6 +57,12 @@ h3 {
     padding-top: 10px;
 }
 
+.CorMarcacao {
+    display: flex !important;
+    text-align: center;
+    padding-top: 10px;
+}
+
 .mat-cell:last-of-type, mat-footer-cell:last-of-type, mat-header-cell:last-of-type {
     padding-right: 0;
     padding-left: 0;
@@ -69,4 +75,11 @@ h3 {
 
 .mat-footer-row, .mat-header-row, .mat-row {
     align-items: inherit;
+}
+
+.btn-novo {
+    width: 100%; 
+    text-align: right; 
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
