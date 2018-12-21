@@ -26,7 +26,7 @@ export class FuncionarioService {
   }
 
   update(func: funcionario) : Observable<any> {
-    return this.http.put(env.baseApiUrl + this.PATH, func)
+    return this.http.put(env.baseApiUrl + this.PATH + "/" + func.id, func)
   }
 
   delete(id: number) {

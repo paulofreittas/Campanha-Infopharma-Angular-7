@@ -27,6 +27,7 @@ import { ListagemHistoricoComponent } from './_components';
 import { ListagemFuncionariosComponent } from './_components';
 import { ConfirmacaoExclusaoFuncionarioComponent } from './_components';
 import { CadastroFuncionarioComponent } from './_components';
+import { AlterarFuncionarioComponent } from './_components';
 
 import { StatusPipe } from './_pipes';
 import { TipoPropostaPipe } from './_pipes';
@@ -48,6 +49,7 @@ import {
   MatDatepickerModule,
 } from '@angular/material';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +67,7 @@ import {
     ListagemFuncionariosComponent,
     ConfirmacaoExclusaoFuncionarioComponent,
     CadastroFuncionarioComponent,
+    AlterarFuncionarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +103,7 @@ import {
     ConfirmacaoExclusaoContatoComponent,
     ConfirmacaoExclusaoFuncionarioComponent,
     CadastroFuncionarioComponent,
+    AlterarFuncionarioComponent,
     HistoricoListaComponent
   ],
   providers: [

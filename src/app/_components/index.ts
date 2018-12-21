@@ -10,4 +10,5 @@ export * from './confirmacao-exclusao-contato';
 export * from './listagem-funcionarios';
 export * from './confirmacao-exclusao-funcionario';
 export * from './cadastro-funcionario';
+export * from './alterar-funcionario';
 

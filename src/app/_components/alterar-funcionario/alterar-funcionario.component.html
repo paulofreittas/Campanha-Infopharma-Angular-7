@@ -3,13 +3,13 @@
         <div class="full-width">
             <mat-form-field appearance="outline">
               <mat-label>Nome</mat-label>
-              <input matInput formControlName="nome">
+              <input matInput formControlName="nome" [value]="func.nome">
             </mat-form-field>
           </div>
         <div class="full-width">
           <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput formControlName="login">
+            <input matInput formControlName="login" [value]="func.login">
           </mat-form-field>
         </div>
         <div class="full-width">
@@ -21,17 +21,17 @@
         </div>
         <div class="selectColor">
           <p>Selecione sua cor</p>
-          <mcc-color-picker mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger" [hideUsedColors] = "true" [class]="selectColor"> </mcc-color-picker>
+          <mcc-color-picker mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger" [hideUsedColors] = "true" [class]="selectColor" [selectedColor] = "func.corMarcacao"> </mcc-color-picker>
         </div>
         
           <div class="full-width">
             <mat-form-field appearance="outline">
-              <input matInput mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="corMarcacao">
+              <input matInput mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="corMarcacao" [value]="func.corMarcacao">
             </mat-form-field>
           </div>
         <div class="div-login">
-          <button mat-raised-button color="primary" class="center full-width" [disabled]="form.invalid" (click)="cadastrar()">
-            Cadastrar
+          <button mat-raised-button color="primary" class="center full-width" [disabled]="form.invalid" (click)="alterar(func.id)">
+            Alterar
           </button>
         </div>
       </form>

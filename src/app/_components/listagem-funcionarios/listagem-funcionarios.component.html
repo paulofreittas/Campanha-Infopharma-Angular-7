@@ -68,7 +68,7 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let data" class="acoes acoes-table" fxLayoutAlign="center">
                 <div class="acoes-btns">
-                    <a style="cursor: pointer;margin: 5px;"><mat-icon matTooltip="Alterar">assignment_ind</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;" (click)="openAlterarFuncionarioDialog(data.id)"><mat-icon matTooltip="Alterar">assignment_ind</mat-icon></a>
                     <a style="cursor: pointer;margin: 5px;" (click)="openExcluirFuncionarioDialog(data)"><mat-icon matTooltip="Excluir">delete</mat-icon></a>
                 </div>
               </mat-cell>

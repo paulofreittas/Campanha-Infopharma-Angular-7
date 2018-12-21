@@ -25,9 +25,34 @@ export class CadastroFuncionarioComponent implements OnInit {
 
   gerarForm() {
     this.form = this.fb.group({
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      corMarcacao: ['', [Validators.required, Validators.minLength(5)]],
       login: ['', [Validators.required, Validators.minLength(3)]],
       senha: ['', [Validators.required, Validators.minLength(3)]]
     });
+  }
+
+  cadastrar() {
+    if (this.form.invalid) {
+      this.snackBar.open(
+        "Dados inválidos", "Ok", { duration: 5000 });
+      return;
+    }
+
+    const func: funcionario = this.form.value;
+    
+    this.funcionarioService.add(func)
+      .subscribe(
+        data => {
+          this.snackBar.open(
+            "Funcionário cadastrado com sucesso", "Ok", { duration: 5000 });
+          this.dialogRef.close(true);
+          return;
+        },
+        err => {
+          this.snackBar.open(err, "Erro", { duration: 5000 });
+        }
+      );
   }
 
 }

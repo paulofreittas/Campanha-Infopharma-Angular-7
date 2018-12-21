@@ -4,6 +4,7 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import { FuncionarioService } from '../../_services';
 import { ConfirmacaoExclusaoFuncionarioComponent } from '../confirmacao-exclusao-funcionario';
 import { CadastroFuncionarioComponent } from '..';
+import { AlterarFuncionarioComponent } from '../alterar-funcionario';
 
 @Component({
   selector: 'app-listagem-funcionarios',
@@ -18,6 +19,7 @@ export class ListagemFuncionariosComponent implements OnInit {
 
   constructor(private funcionarioService : FuncionarioService,
               public excluirFuncionarioDialog: MatDialog,
+              public alterarFuncionarioDialog: MatDialog,
               public cadastroFuncionarioDialog: MatDialog) { }
 
   ngOnInit() {
@@ -41,6 +43,17 @@ export class ListagemFuncionariosComponent implements OnInit {
 
   openCadastrarFuncionarioDialog(): void {
     const dialogRef = this.cadastroFuncionarioDialog.open(CadastroFuncionarioComponent, null);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == true)
+        this.exibirFuncionarios();
+    })
+  }
+
+  openAlterarFuncionarioDialog(id : number): void {
+    const dialogRef = this.alterarFuncionarioDialog.open(AlterarFuncionarioComponent, {
+      data: { id }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result == true)
