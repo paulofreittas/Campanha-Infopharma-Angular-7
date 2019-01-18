@@ -13,6 +13,7 @@ export class CadastroFuncionarioComponent implements OnInit {
 
   form: FormGroup;
   hide = true;
+  selectColor = null;
 
   constructor(private funcionarioService : FuncionarioService,
               public dialogRef: MatDialogRef<CadastroFuncionarioComponent>,

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  private dataAtual: string;
+  public dataAtual: string;
 
   constructor() { }
 

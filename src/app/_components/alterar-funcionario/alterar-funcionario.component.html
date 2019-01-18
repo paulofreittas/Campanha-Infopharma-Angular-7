@@ -3,30 +3,30 @@
         <div class="full-width">
             <mat-form-field appearance="outline">
               <mat-label>Nome</mat-label>
-              <input matInput formControlName="nome" [value]="func.nome">
+              <input matInput id="nome" formControlName="nome">
             </mat-form-field>
           </div>
         <div class="full-width">
           <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput formControlName="login" [value]="func.login">
+            <input matInput id="login" formControlName="login">
           </mat-form-field>
         </div>
         <div class="full-width">
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input matInput formControlName="senha" [type]="hide ? 'password' : 'text'">
+            <input matInput id="senha" formControlName="senha" [type]="hide ? 'password' : 'text'">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
         </div>
         <div class="selectColor">
           <p>Selecione sua cor</p>
-          <mcc-color-picker mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger" [hideUsedColors] = "true" [class]="selectColor" [selectedColor] = "func.corMarcacao"> </mcc-color-picker>
+          <mcc-color-picker mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger" [hideUsedColors] = "true" [class]="selectColor"> </mcc-color-picker>
         </div>
         
           <div class="full-width">
             <mat-form-field appearance="outline">
-              <input matInput mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="corMarcacao" [value]="func.corMarcacao">
+              <input matInput id="corMarcacao" mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="corMarcacao" >
             </mat-form-field>
           </div>
         <div class="div-login">

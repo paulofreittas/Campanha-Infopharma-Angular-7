@@ -37,10 +37,10 @@ export class VincularFuncionarioComponent implements OnInit {
     {value: 3, viewValue: 'Entrar em contato depois'}
   ];
 
-  private dataAtual: string;
+  public dataAtual: string;
 
   constructor(public dialogRef: MatDialogRef<VincularFuncionarioComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: drogaria, 
+              @Inject(MAT_DIALOG_DATA) public data: any, 
               private contatoDrogariaService : ContatoDrogariaService,
               private snackBar: MatSnackBar) { }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { FuncionarioService } from 'src/app/_services';
 import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { funcionario } from 'src/app/_models';
@@ -13,7 +13,8 @@ export class AlterarFuncionarioComponent implements OnInit {
 
   form: FormGroup;
   hide = true;
-  private func : funcionario;
+  public func : funcionario;
+  selectColor = null;
 
   constructor(private funcionarioService : FuncionarioService,
               public dialogRef: MatDialogRef<AlterarFuncionarioComponent>,
@@ -23,8 +24,9 @@ export class AlterarFuncionarioComponent implements OnInit {
 
   ngOnInit() {
     this.func = null;
-    this.buscarFuncionario(this.data.id);
+   // this.buscarFuncionario(this.data.id);
     this.gerarForm();
+    this.obterDados(this.data.id);
   }
 
   buscarFuncionario(id: number)
@@ -49,6 +51,24 @@ export class AlterarFuncionarioComponent implements OnInit {
       login: ['', [Validators.required, Validators.minLength(3)]],
       senha: ['', [Validators.required, Validators.minLength(3)]]
     });
+  }
+
+  obterDados(id: number) {
+    this.funcionarioService.findByFuncionarioId(id)
+    .subscribe(
+      data => {
+        const dado = data as funcionario;
+        this.func = dado;
+        this.form.get('nome').setValue(dado.nome);
+        this.form.get('corMarcacao').setValue(dado.corMarcacao);
+        this.form.get('login').setValue(dado.login);
+      },
+      err => {
+        this.snackBar.open(err, "Erro", { duration: 5000 });
+        return;
+      }
+    );
+    
   }
 
   alterar(id : number) {
