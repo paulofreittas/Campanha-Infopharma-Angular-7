@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 
 import { 
   MatSelect, 
@@ -152,11 +152,13 @@ export class ListagemDrogariasComponent implements OnInit {
     if (value.length >= 3)
     {
       this.search = value;
+      this.pagina = 0;
       this.exibirDrogarias();
     }
     else if (value.length == 0)
     {
       this.search = "";
+      this.pagina = 0;
       this.exibirDrogarias();
     } 
   }

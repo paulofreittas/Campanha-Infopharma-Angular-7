@@ -36,26 +36,26 @@ export class HistoricoListaComponent implements OnInit {
       data: { drog }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result == true)
-        this.buscarHistorico(drog.id);
-    })
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result == true)
+    //     this.buscarHistorico(drog.id);
+    // })
   }
 
   buscarHistorico(id: number) {
-    return this.contatoDrogariaService.findByDrogariaId(id)
-    .subscribe(
-      data => {
-        if (data.resultado.length == 0)
-          this.dialogRef.close();
-        const contatosDrogaria = data.resultado as contatoDrogaria[];
-        this.func = contatosDrogaria[0].drogaria.funcionario;
-        this.dataSource = new MatTableDataSource<contatoDrogaria>(contatosDrogaria);
-      },
-      err => {
-        console.log(err);
-      }
-    )
+    // return this.contatoDrogariaService.findByDrogariaId(id)
+    // .subscribe(
+    //   data => {
+    //     if (data.resultado.length == 0)
+    //       this.dialogRef.close();
+    //     const contatosDrogaria = data.resultado as contatoDrogaria[];
+    //     this.func = contatosDrogaria[0].drogaria.funcionario;
+    //     this.dataSource = new MatTableDataSource<contatoDrogaria>(contatosDrogaria);
+    //   },
+    //   err => {
+    //     console.log(err);
+    //   }
+    // )
   }
 
   excluirContatoDrogaria(contatoDrog: contatoDrogaria) : void {
@@ -63,10 +63,10 @@ export class HistoricoListaComponent implements OnInit {
       data: { contatoDrog }
     });
 
-    confirmaExclusaoDialog.afterClosed().subscribe(result => {
-      if (result == true)
-        this.buscarHistorico(contatoDrog.drogaria.id)
-    });
+    // confirmaExclusaoDialog.afterClosed().subscribe(result => {
+    //   if (result == true)
+    //     this.buscarHistorico(contatoDrog.drogaria.id)
+    // });
   }
   
 }

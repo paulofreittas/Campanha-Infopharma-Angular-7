@@ -55,13 +55,13 @@ export class VincularFuncionarioComponent implements OnInit {
 
   vincularFuncionario(drog: drogaria, proposta: number, status: number, observacao: string)
   {
-    drog.funcionario = JSON.parse(localStorage.getItem('infopharmaUser'));
-    drog.funcionarioIdFk = drog.funcionario.id;
+    // drog.funcionario = JSON.parse(localStorage.getItem('infopharmaUser'));
+    // drog.funcionarioIdFk = drog.funcionario.id;
 
     var ctDrogaria = new contatoDrogaria();
 
     ctDrogaria.drogaria = drog;
-    ctDrogaria.drogariaIdFk = drog.id;
+    // ctDrogaria.drogariaIdFk = drog.id;
     ctDrogaria.tipoProposta = proposta;
     ctDrogaria.status = status;
     ctDrogaria.observacao = observacao;

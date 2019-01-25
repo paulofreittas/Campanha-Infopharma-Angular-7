@@ -8,7 +8,7 @@ import { environment as env } from '../../../environments/environment';
 })
 export class DrogariaService {
 
-  private readonly PATH: string = 'drogaria';
+  private readonly PATH: string = 'cliente';
 
   constructor(private http: HttpClient) { }
 
