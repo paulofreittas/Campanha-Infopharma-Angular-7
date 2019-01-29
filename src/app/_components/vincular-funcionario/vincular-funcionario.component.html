@@ -1,22 +1,27 @@
 <div mat-dialog-content>
     <p>Deseja vincular seu contato com essa drogaria?</p>
-    <mat-form-field style="width: 28%; margin-left: 2%;" appearance="outline">
+    <mat-form-field style="width: 17%; margin-left: 2%;" appearance="outline">
       <mat-label>Data</mat-label>
       <input matInput [value]="dataAtual" disabled>
     </mat-form-field>
 
-    <mat-form-field style="width: 30%; margin-left: 2%;" appearance="outline">
+    <mat-form-field style="width: 23%; margin-left: 2%;" appearance="outline">
       <mat-label>CNPJ</mat-label>
       <input matInput [(ngModel)]="data.drog.cnpj" disabled>
     </mat-form-field>
 
-    <mat-form-field style="width: 30%; margin-left: 2%;" appearance="outline">
+    <mat-form-field style="width: 23%; margin-left: 2%;" appearance="outline">
       <mat-label>Status</mat-label>
       <mat-select placeholder="Status" #stat>
         <mat-option *ngFor="let stat of status" [value]="stat.value">
           {{stat.viewValue}}
         </mat-option>
       </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width: 23%; margin-left: 2%;" appearance="outline">
+      <mat-label>Data de Retorno</mat-label>
+      <input matInput [value]="ctDrogaria.dataRetorno" [disabled]="stat.value != 2"> {{ ctDrogaria.dataRetorno | date: 'dd/MM/yyyy' }}
     </mat-form-field>
 
     <mat-form-field style="width: 45%; margin-left: 2%;" appearance="outline">

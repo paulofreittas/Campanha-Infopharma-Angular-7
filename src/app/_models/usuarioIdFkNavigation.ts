@@ -22,7 +22,7 @@ export class usuarioIdFkNavigation {
     cidadeIdFk?: any;
     bairroIdFk?: any;
     shortcuts: string;
-    cor: number;
+    cor: string;
     bairroIdFkNavigation?: any;
     cidadeIdFkNavigation?: any;
     fornecedorIdFkNavigation?: any;

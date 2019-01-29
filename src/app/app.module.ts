@@ -31,6 +31,7 @@ import { AlterarFuncionarioComponent } from './_components';
 
 import { StatusPipe } from './_pipes';
 import { TipoPropostaPipe } from './_pipes';
+import { UfPipe } from './_pipes';
 
 import { MccColorPickerModule } from 'material-community-components';
 
@@ -48,6 +49,7 @@ import {
   MatDialogModule,
   MatDatepickerModule,
 } from '@angular/material';
+
 
 
 @NgModule({
@@ -68,6 +70,7 @@ import {
     ConfirmacaoExclusaoFuncionarioComponent,
     CadastroFuncionarioComponent,
     AlterarFuncionarioComponent,
+    UfPipe,
   ],
   imports: [
     BrowserModule,

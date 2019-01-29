@@ -10,6 +10,8 @@ export class contatoUsuarioCampanha {
     campanhaRenovacaoIdFk: number;
     observacao?: any;
     tipoProposta: number;
+    dataRetorno: Date;
+    status: number;
     campanhaRenovacaoIdFkNavigation?: any;
     usuarioIdFkNavigation: usuarioIdFkNavigation;
 }

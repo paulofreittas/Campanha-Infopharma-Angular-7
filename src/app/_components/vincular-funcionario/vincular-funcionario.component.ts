@@ -2,8 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import * as moment from 'moment';
-import { drogaria, contatoDrogaria } from 'src/app/_models';
+import { drogaria, contatoDrogaria, funcionario, usuarioIdFkNavigation } from 'src/app/_models';
 import { ContatoDrogariaService } from 'src/app/_services';
+import { contatoUsuarioCampanha } from '../../_models';
 
 export interface Proposta {
   value: number;
@@ -26,18 +27,19 @@ export class VincularFuncionarioComponent implements OnInit {
 
   proposta: Proposta[] = [
     {value: 0, viewValue: 'Sim Multi'},
-    {value: 1, viewValue: 'PBM'},
-    {value: 2, viewValue: 'Sim Multi + PBM'}
+    {value: 1, viewValue: 'Sim Multi + Documentação'},
+    {value: 2, viewValue: 'PBM'}
   ];
 
   status: Status[] = [
     {value: 0, viewValue: 'Recusado'},
     {value: 1, viewValue: 'Proposta enviada'},
-    {value: 2, viewValue: 'Contrato assinado'},
-    {value: 3, viewValue: 'Entrar em contato depois'}
+    {value: 2, viewValue: 'Entrar em contato depois'}
   ];
 
   public dataAtual: string;
+  public ctDrogaria : contatoUsuarioCampanha;
+  public user : usuarioIdFkNavigation;
 
   constructor(public dialogRef: MatDialogRef<VincularFuncionarioComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, 
@@ -47,6 +49,10 @@ export class VincularFuncionarioComponent implements OnInit {
   ngOnInit() {
     this.dataAtual = moment().format('DD/MM/YYYY');
     this.registroAlterado = false;
+
+    this.user = JSON.parse(localStorage.getItem('infopharmaUser'));
+
+    this.ctDrogaria = new contatoUsuarioCampanha();
   }
 
   onClose(): void {
@@ -58,13 +64,13 @@ export class VincularFuncionarioComponent implements OnInit {
     // drog.funcionario = JSON.parse(localStorage.getItem('infopharmaUser'));
     // drog.funcionarioIdFk = drog.funcionario.id;
 
-    var ctDrogaria = new contatoDrogaria();
+    
 
-    ctDrogaria.drogaria = drog;
+    this.ctDrogaria.clienteIdFk = drog.idPk;
     // ctDrogaria.drogariaIdFk = drog.id;
-    ctDrogaria.tipoProposta = proposta;
-    ctDrogaria.status = status;
-    ctDrogaria.observacao = observacao;
+    this.ctDrogaria.tipoProposta = proposta;
+    this.ctDrogaria.status = status;
+    this.ctDrogaria.usuarioIdFk = this.user.idPk;
 
     this.contatoDrogariaService.add(ctDrogaria).subscribe(
       data => {
