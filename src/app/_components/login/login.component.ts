@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-import { funcionario } from '../../_models';
+import { funcionario, usuarioIdFkNavigation } from '../../_models';
 import { AuthenticationService } from 'src/app/_services';
 
 @Component({
@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
 
   gerarForm() {
     this.form = this.fb.group({
-      login: ['', [Validators.required, Validators.minLength(3)]],
-      senha: ['', [Validators.required, Validators.minLength(3)]]
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const func: funcionario = this.form.value;
+    const func: usuarioIdFkNavigation = this.form.value;
     
-    this.authenticationService.logar(func.login, func.senha)
+    this.authenticationService.logar(func.username, func.password)
       .subscribe(
         data => {
           this.router.navigateByUrl("/dashboard");

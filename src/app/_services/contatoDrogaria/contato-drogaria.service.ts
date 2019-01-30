@@ -3,7 +3,7 @@ import { environment as env } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { contatoDrogaria } from 'src/app/_models';
+import { contatoDrogaria, contatoUsuarioCampanha } from '../../_models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ContatoDrogariaService {
 
   constructor(private http: HttpClient) { }
 
-  add(ctDrogaria: contatoDrogaria) : Observable<any> {
+  add(ctDrogaria: contatoUsuarioCampanha) : Observable<any> {
     return this.http.post(env.baseApiUrl + this.PATH, ctDrogaria);
   }
 

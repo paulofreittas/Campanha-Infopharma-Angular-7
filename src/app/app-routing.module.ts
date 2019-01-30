@@ -8,17 +8,11 @@ import { LoginComponent,
 import { AuthGuard } from './_guards';
 
 const routes: Routes = [
-    // { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
-    // { path: 'login', component: LoginComponent},
-    // { path: 'drogarias', component: ListagemDrogariasComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
-    // { path: 'historico', component: ListagemHistoricoComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
-    // { path: 'funcionario', component: ListagemFuncionariosComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
-
-    { path: '', component: DashboardComponent},
+    { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent},
-    { path: 'drogarias', component: ListagemDrogariasComponent},
-    { path: 'historico', component: ListagemHistoricoComponent },
-    { path: 'funcionario', component: ListagemFuncionariosComponent},
+    { path: 'drogarias', component: ListagemDrogariasComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
+    { path: 'historico', component: ListagemHistoricoComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
+    { path: 'funcionario', component: ListagemFuncionariosComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
 
     { path: '**', redirectTo: ''}
 ];

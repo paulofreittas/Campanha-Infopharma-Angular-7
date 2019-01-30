@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { contatoDrogaria, funcionario, drogaria } from 'src/app/_models';
+import { contatoDrogaria, drogaria, usuarioIdFkNavigation } from '../../_models';
 import { MatTableDataSource, PageEvent, MatDialog } from '@angular/material';
-import { ContatoDrogariaService, AuthenticationService } from 'src/app/_services';
+import { ContatoDrogariaService, AuthenticationService } from '../../_services';
 import { Observable } from 'rxjs';
 import { HistoricoListaComponent } from '../../_components';
 
@@ -14,7 +14,7 @@ export class ListagemHistoricoComponent implements OnInit {
 
   dataSource: MatTableDataSource<contatoDrogaria>;
   colunas: string[] = ['DataAlteracao', 'NomeFantasia', 'CNPJ', 'Proposta', 'Situacao', 'UltObservacao', 'Acoes'];
-  user : funcionario;
+  user : usuarioIdFkNavigation;
   totalContatoDrogarias : number;
   private pagina: number;
   private search: string;
@@ -49,7 +49,7 @@ export class ListagemHistoricoComponent implements OnInit {
   }
 
   buscarHistoricoContatos() {
-    this.contatoDrogService.findByFuncionarioId(this.user.id, this.search, this.pagina)
+    this.contatoDrogService.findByFuncionarioId(this.user.idPk, this.search, this.pagina)
     .subscribe(
       data => {
         this.totalContatoDrogarias = data.numeroResultados;

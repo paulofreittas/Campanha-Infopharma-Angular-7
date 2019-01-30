@@ -40,6 +40,7 @@ export class VincularFuncionarioComponent implements OnInit {
   public dataAtual: string;
   public ctDrogaria : contatoUsuarioCampanha;
   public user : usuarioIdFkNavigation;
+  public mask: Array<string | RegExp>;
 
   constructor(public dialogRef: MatDialogRef<VincularFuncionarioComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, 
@@ -49,6 +50,7 @@ export class VincularFuncionarioComponent implements OnInit {
   ngOnInit() {
     this.dataAtual = moment().format('DD/MM/YYYY');
     this.registroAlterado = false;
+    this.mask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[2]/, /[0]/, /[0-9]/, /[0-9]/]
 
     this.user = JSON.parse(localStorage.getItem('infopharmaUser'));
 
@@ -71,8 +73,9 @@ export class VincularFuncionarioComponent implements OnInit {
     this.ctDrogaria.tipoProposta = proposta;
     this.ctDrogaria.status = status;
     this.ctDrogaria.usuarioIdFk = this.user.idPk;
-
-    this.contatoDrogariaService.add(ctDrogaria).subscribe(
+    this.ctDrogaria.observacao = observacao;
+    this.ctDrogaria.dataRetorno = new Date(this.ctDrogaria.dataRetorno.toString().split('/').join('-'));
+    this.contatoDrogariaService.add(this.ctDrogaria).subscribe(
       data => {
         this.snackBar.open("Contato registrado com sucesso!", "Ok", { duration: 5000 });
         this.registroAlterado = true;

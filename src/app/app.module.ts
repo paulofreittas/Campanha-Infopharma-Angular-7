@@ -34,6 +34,7 @@ import { TipoPropostaPipe } from './_pipes';
 import { UfPipe } from './_pipes';
 
 import { MccColorPickerModule } from 'material-community-components';
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 import {
@@ -98,6 +99,7 @@ import {
     MatDialogModule,
     MatDatepickerModule,
     MccColorPickerModule,
+    TextMaskModule,
 
     AppRoutingModule
   ],

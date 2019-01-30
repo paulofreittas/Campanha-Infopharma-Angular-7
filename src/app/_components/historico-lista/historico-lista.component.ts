@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatTableDataSource, MatDialog } from '@angular/material';
-import { drogaria, contatoDrogaria, funcionario } from 'src/app/_models';
-import { ContatoDrogariaService, AuthenticationService } from 'src/app/_services';
+import { drogaria, contatoDrogaria, usuarioIdFkNavigation } from '../../_models';
+import { ContatoDrogariaService, AuthenticationService } from '../../_services';
 import { VincularFuncionarioComponent, ConfirmacaoExclusaoContatoComponent } from '../../_components';
 
 @Component({
@@ -13,8 +13,8 @@ export class HistoricoListaComponent implements OnInit {
 
   dataSource: MatTableDataSource<contatoDrogaria>;
   colunas: string[] = ['ID', 'NomeFantasia', 'Funcionario', 'Data', 'TipoProposta', 'Status', 'Observacao', 'Acoes'];
-  user : funcionario;
-  func : funcionario;
+  user : usuarioIdFkNavigation;
+  func : usuarioIdFkNavigation;
 
   constructor(public dialogRef: MatDialogRef<HistoricoListaComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, 
