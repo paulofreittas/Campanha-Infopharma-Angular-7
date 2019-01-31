@@ -4,6 +4,19 @@ mat-cell, mat-footer-cell, mat-header-cell {
     display: grid;
 }
 
+::ng-deep .mat-chip-list-wrapper {
+    display: inline !important;
+}
+
+::ng-deep .mat-standard-chip {
+    line-height: 13px;
+}
+
+::ng-deep .mat-standard-chip::after {
+   background-color: #db4132 !important;
+   transition: none !important;
+}
+
 .id-table {
     max-width: 50px;
 }

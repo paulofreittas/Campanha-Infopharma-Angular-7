@@ -9,13 +9,13 @@
         <div class="full-width">
           <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput id="login" formControlName="login">
+            <input matInput id="username" formControlName="username">
           </mat-form-field>
         </div>
         <div class="full-width">
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input matInput id="senha" formControlName="senha" [type]="hide ? 'password' : 'text'">
+            <input matInput id="password" formControlName="password" [type]="hide ? 'password' : 'text'">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
         </div>
@@ -26,11 +26,11 @@
         
           <div class="full-width">
             <mat-form-field appearance="outline">
-              <input matInput id="corMarcacao" mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="corMarcacao" >
+              <input matInput id="cor" mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="cor" >
             </mat-form-field>
           </div>
         <div class="div-login">
-          <button mat-raised-button color="primary" class="center full-width" [disabled]="form.invalid" (click)="alterar(func.id)">
+          <button mat-raised-button color="primary" class="center full-width" [disabled]="form.invalid" (click)="alterar(func.idPk)">
             Alterar
           </button>
         </div>

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { FuncionarioService } from 'src/app/_services';
 import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { funcionario } from 'src/app/_models';
+import { funcionario, usuarioIdFkNavigation } from 'src/app/_models';
 
 @Component({
   selector: 'app-alterar-funcionario',
@@ -13,7 +13,7 @@ export class AlterarFuncionarioComponent implements OnInit {
 
   form: FormGroup;
   hide = true;
-  public func : funcionario;
+  public func : usuarioIdFkNavigation;
   selectColor = null;
 
   constructor(private funcionarioService : FuncionarioService,
@@ -24,7 +24,7 @@ export class AlterarFuncionarioComponent implements OnInit {
 
   ngOnInit() {
     this.func = null;
-   // this.buscarFuncionario(this.data.id);
+    this.buscarFuncionario(this.data.id);
     this.gerarForm();
     this.obterDados(this.data.id);
   }
@@ -34,7 +34,7 @@ export class AlterarFuncionarioComponent implements OnInit {
     this.funcionarioService.findByFuncionarioId(id)
     .subscribe(
       data => {
-        const dado = data as funcionario;
+        const dado = data as usuarioIdFkNavigation;
         this.func = dado;
       },
       err => {
@@ -47,9 +47,9 @@ export class AlterarFuncionarioComponent implements OnInit {
   gerarForm() {
     this.form = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
-      corMarcacao: ['', [Validators.required, Validators.minLength(5)]],
-      login: ['', [Validators.required, Validators.minLength(3)]],
-      senha: ['', [Validators.required, Validators.minLength(3)]]
+      cor: ['', [Validators.required, Validators.minLength(5)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -57,11 +57,11 @@ export class AlterarFuncionarioComponent implements OnInit {
     this.funcionarioService.findByFuncionarioId(id)
     .subscribe(
       data => {
-        const dado = data as funcionario;
+        const dado = data as usuarioIdFkNavigation;
         this.func = dado;
         this.form.get('nome').setValue(dado.nome);
-        this.form.get('corMarcacao').setValue(dado.corMarcacao);
-        this.form.get('login').setValue(dado.login);
+        this.form.get('cor').setValue(dado.cor);
+        this.form.get('username').setValue(dado.username);
       },
       err => {
         this.snackBar.open(err, "Erro", { duration: 5000 });
@@ -79,7 +79,7 @@ export class AlterarFuncionarioComponent implements OnInit {
     }
 
     this.func = this.form.value;
-    this.func.id = id;
+    this.func.idPk = id;
     
     this.funcionarioService.update(this.func)
       .subscribe(

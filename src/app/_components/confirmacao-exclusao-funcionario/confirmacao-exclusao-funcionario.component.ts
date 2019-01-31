@@ -21,13 +21,13 @@ export class ConfirmacaoExclusaoFuncionarioComponent implements OnInit {
   }
 
   excluir() {
-    if (JSON.parse(localStorage.getItem('infopharmaUser')).id == this.data.func.id)
+    if (JSON.parse(localStorage.getItem('infopharmaUser')).idPk == this.data.func.idPk)
     {
       this.snackBar.open("Você não pode excluir o usuário logado", "Erro", { duration: 5000 });
       this.onClose(false);
     }
     else {
-      this.funcionarioService.delete(this.data.func.id)
+      this.funcionarioService.delete(this.data.func.idPk)
         .subscribe(
         data => {
           this.snackBar.open("Funcionário excluído com sucesso!", "Ok", { duration: 5000 });

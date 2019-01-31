@@ -34,26 +34,26 @@ export class CadastroFuncionarioComponent implements OnInit {
   }
 
   cadastrar() {
-    if (this.form.invalid) {
-      this.snackBar.open(
-        "Dados inválidos", "Ok", { duration: 5000 });
-      return;
-    }
+    // if (this.form.invalid) {
+    //   this.snackBar.open(
+    //     "Dados inválidos", "Ok", { duration: 5000 });
+    //   return;
+    // }
 
-    const func: funcionario = this.form.value;
+    // const func: funcionario = this.form.value;
     
-    this.funcionarioService.add(func)
-      .subscribe(
-        data => {
-          this.snackBar.open(
-            "Funcionário cadastrado com sucesso", "Ok", { duration: 5000 });
-          this.dialogRef.close(true);
-          return;
-        },
-        err => {
-          this.snackBar.open(err, "Erro", { duration: 5000 });
-        }
-      );
+    // this.funcionarioService.add(func)
+    //   .subscribe(
+    //     data => {
+    //       this.snackBar.open(
+    //         "Funcionário cadastrado com sucesso", "Ok", { duration: 5000 });
+    //       this.dialogRef.close(true);
+    //       return;
+    //     },
+    //     err => {
+    //       this.snackBar.open(err, "Erro", { duration: 5000 });
+    //     }
+    //   );
   }
 
 }

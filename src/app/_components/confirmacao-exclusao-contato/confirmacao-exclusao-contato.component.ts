@@ -24,7 +24,7 @@ export class ConfirmacaoExclusaoContatoComponent implements OnInit {
   }
 
   excluir() {
-    this.contatoDrogariaService.delete(this.data.contatoDrog.id)
+    this.contatoDrogariaService.delete(this.data.contatoDrog.idPk)
     .subscribe(
       data => {
         this.snackBar.open("Contato excluído com sucesso!", "Ok", { duration: 5000 });

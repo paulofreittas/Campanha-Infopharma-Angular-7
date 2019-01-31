@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../../environments/environment';
-import { funcionario } from 'src/app/_models';
+import { usuarioIdFkNavigation } from '../../_models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +21,12 @@ export class FuncionarioService {
     return this.http.get(env.baseApiUrl + this.PATH + "/" + id)
   }
 
-  add(func: funcionario) : Observable<any> {
-    return this.http.post(env.baseApiUrl + this.PATH, func)
-  }
+  // add(func: funcionario) : Observable<any> {
+  //   return this.http.post(env.baseApiUrl + this.PATH, func)
+  // }
 
-  update(func: funcionario) : Observable<any> {
-    return this.http.put(env.baseApiUrl + this.PATH + "/" + func.id, func)
+  update(func: usuarioIdFkNavigation) : Observable<any> {
+    return this.http.put(env.baseApiUrl + this.PATH + "/" + func.idPk, func)
   }
 
   delete(id: number) {

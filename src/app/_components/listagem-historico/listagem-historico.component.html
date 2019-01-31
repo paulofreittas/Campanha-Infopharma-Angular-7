@@ -49,7 +49,7 @@
               Nome Fantasia
             </mat-header-cell>
             <mat-cell *matCellDef="let data">
-              {{ data.drogaria.nomeFantasia }}
+              {{ data.clienteIdFkNavigation.nomeFantasia }}
             </mat-cell>
           </ng-container>
       
@@ -58,7 +58,7 @@
               CNPJ
             </mat-header-cell>
             <mat-cell *matCellDef="let data" class="cnpj-table">
-              {{ data.drogaria.cnpj }}
+              {{ data.clienteIdFkNavigation.cnpj }}
             </mat-cell>
           </ng-container>
       
@@ -76,7 +76,7 @@
               Proposta
             </mat-header-cell>
             <mat-cell *matCellDef="let data" class="proposta-table">
-              {{ data.tipoProposta }}
+              {{ data.tipoProposta | tipoProposta }}
             </mat-cell>
           </ng-container>
       
@@ -94,7 +94,7 @@
               Situação
             </mat-header-cell>
             <mat-cell *matCellDef="let data" class="situacao-table">
-              {{ data.status }}
+              {{ data.status | status }}
             </mat-cell>
           </ng-container>
 
@@ -113,7 +113,7 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let data" class="acoes acoes-table" fxLayoutAlign="center">
                 <div class="acoes-btns">
-                    <a style="cursor: pointer;margin: 5px;" (click)="openHistoricoDialog(data.drogaria)"><mat-icon matTooltip="Histórico completo">history</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;" (click)="openHistoricoDialog(data.clienteIdFkNavigation)"><mat-icon matTooltip="Histórico completo">history</mat-icon></a>
                 </div>
               </mat-cell>
           </ng-container>

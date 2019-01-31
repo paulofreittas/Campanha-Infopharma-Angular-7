@@ -31,7 +31,7 @@
               ID
             </mat-header-cell>
             <mat-cell *matCellDef="let data" class="id-table">
-              {{ data.id }}
+              {{ data.idPk }}
             </mat-cell>
         </ng-container>
       
@@ -49,7 +49,7 @@
               Login
             </mat-header-cell>
             <mat-cell *matCellDef="let data" class="login-table">
-              {{ data.login }}
+              {{ data.username }}
             </mat-cell>
           </ng-container>
 
@@ -57,7 +57,7 @@
             <mat-header-cell *matHeaderCellDef class="cor-table">
               Cor
             </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="CorMarcacao cor-table" [style.color]="data.corMarcacao" fxLayoutAlign="center">
+            <mat-cell *matCellDef="let data" class="CorMarcacao cor-table" [style.color]="data.cor" fxLayoutAlign="center">
               <mat-icon matTooltip="Alterar">color_lens</mat-icon>
             </mat-cell>
           </ng-container>
@@ -68,7 +68,7 @@
               </mat-header-cell>
               <mat-cell *matCellDef="let data" class="acoes acoes-table" fxLayoutAlign="center">
                 <div class="acoes-btns">
-                    <a style="cursor: pointer;margin: 5px;" (click)="openAlterarFuncionarioDialog(data.id)"><mat-icon matTooltip="Alterar">assignment_ind</mat-icon></a>
+                    <a style="cursor: pointer;margin: 5px;" (click)="openAlterarFuncionarioDialog(data.idPk)"><mat-icon matTooltip="Alterar">assignment_ind</mat-icon></a>
                     <a style="cursor: pointer;margin: 5px;" (click)="openExcluirFuncionarioDialog(data)"><mat-icon matTooltip="Excluir">delete</mat-icon></a>
                 </div>
               </mat-cell>
