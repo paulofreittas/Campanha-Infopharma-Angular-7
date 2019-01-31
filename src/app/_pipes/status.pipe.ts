@@ -19,9 +19,6 @@ export class StatusPipe implements PipeTransform {
         texto = "Proposta enviada";
         break;
       case 2:
-        texto = "Contrato assinado";
-        break;
-      case 3:
         texto = "Entrar em contato depois";
         break;
       default:

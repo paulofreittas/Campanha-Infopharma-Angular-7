@@ -63,18 +63,13 @@ export class VincularFuncionarioComponent implements OnInit {
 
   vincularFuncionario(drog: drogaria, proposta: number, status: number, observacao: string)
   {
-    // drog.funcionario = JSON.parse(localStorage.getItem('infopharmaUser'));
-    // drog.funcionarioIdFk = drog.funcionario.id;
-
-    
-
     this.ctDrogaria.clienteIdFk = drog.idPk;
-    // ctDrogaria.drogariaIdFk = drog.id;
     this.ctDrogaria.tipoProposta = proposta;
     this.ctDrogaria.status = status;
     this.ctDrogaria.usuarioIdFk = this.user.idPk;
     this.ctDrogaria.observacao = observacao;
-    this.ctDrogaria.dataRetorno = new Date(this.ctDrogaria.dataRetorno.toString().split('/').join('-'));
+    if (this.ctDrogaria.dataRetorno != null)
+      this.ctDrogaria.dataRetorno = new Date(moment(this.ctDrogaria.dataRetorno.toString().split('/').join('-'), "DD-MM-YYYY").format());
     this.contatoDrogariaService.add(this.ctDrogaria).subscribe(
       data => {
         this.snackBar.open("Contato registrado com sucesso!", "Ok", { duration: 5000 });

@@ -4,33 +4,33 @@ mat-cell, mat-footer-cell, mat-header-cell {
     display: grid;
 }
 
-
 .id-table {
     max-width: 50px;
 }
 
 .nomeFantasia-table {
-    max-width: 150px;
+    max-width: 350px;
 }
 
 .funcionario-table {
-    max-width: 100px;
+    max-width: 150px;
 }
 
 .data-table {
-    max-width: 100px;
+    max-width: 150px;
 }
 
 .tipoProposta-table {
-    max-width: 100px;
+    max-width: 175px;
+    text-align: center;
 }
 
 .status-table {
-    max-width: 100px;
+    max-width: 175px;
 }
 
 .observacao-table {
-    max-width: 250px;
+    max-width: 350px;
 }
 
 .acoes-table {

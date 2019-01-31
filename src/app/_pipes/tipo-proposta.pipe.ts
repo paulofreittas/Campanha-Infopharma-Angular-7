@@ -16,10 +16,10 @@ export class TipoPropostaPipe implements PipeTransform {
         texto = "Sim Multi";
         break;
       case 1:
-        texto = "PBM";
+        texto = "Sim Multi + Documentação";
         break;
       case 2:
-        texto = "Sim Multi + PBM";
+        texto = "PBM";
         break;
       default:
         texto = "Erro"

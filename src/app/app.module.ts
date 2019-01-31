@@ -49,6 +49,7 @@ import {
   MatCheckboxModule,
   MatDialogModule,
   MatDatepickerModule,
+  MatChipsModule,
 } from '@angular/material';
 
 
@@ -100,6 +101,7 @@ import {
     MatDatepickerModule,
     MccColorPickerModule,
     TextMaskModule,
+    MatChipsModule,
 
     AppRoutingModule
   ],

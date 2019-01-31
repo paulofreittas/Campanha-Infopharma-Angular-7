@@ -121,7 +121,7 @@ export class ListagemDrogariasComponent implements OnInit {
   openHistoricoDialog(drog: drogaria): void {
     const dialogRef = this.historicoListaDialog.open(HistoricoListaComponent, {
       data: { drog },
-      minWidth: 1000
+      minWidth: 1500
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, MatTableDataSource, MatDialog } from '@angular/material';
-import { drogaria, contatoDrogaria, usuarioIdFkNavigation } from '../../_models';
+import { drogaria, usuarioIdFkNavigation, contatoUsuarioCampanha } from '../../_models';
 import { ContatoDrogariaService, AuthenticationService } from '../../_services';
 import { VincularFuncionarioComponent, ConfirmacaoExclusaoContatoComponent } from '../../_components';
 
@@ -11,8 +11,8 @@ import { VincularFuncionarioComponent, ConfirmacaoExclusaoContatoComponent } fro
 })
 export class HistoricoListaComponent implements OnInit {
 
-  dataSource: MatTableDataSource<contatoDrogaria>;
-  colunas: string[] = ['ID', 'NomeFantasia', 'Funcionario', 'Data', 'TipoProposta', 'Status', 'Observacao', 'Acoes'];
+  dataSource: MatTableDataSource<contatoUsuarioCampanha>;
+  colunas: string[] = ['ID', 'NomeFantasia', 'Funcionario', 'Data', 'TipoProposta', 'Status', 'Observacao', 'DataRetorno', 'Acoes'];
   user : usuarioIdFkNavigation;
   func : usuarioIdFkNavigation;
 
@@ -23,7 +23,7 @@ export class HistoricoListaComponent implements OnInit {
               public vincularFuncionarioDialog: MatDialog,
               public confirmacaoExclusaoDialog: MatDialog,
               private snackBar: MatSnackBar) { 
-                this.buscarHistorico(data.drog.id)
+                this.buscarHistorico(data.drog.idPk)
               }
 
   ngOnInit() {
@@ -36,37 +36,37 @@ export class HistoricoListaComponent implements OnInit {
       data: { drog }
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result == true)
-    //     this.buscarHistorico(drog.id);
-    // })
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == true)
+        this.buscarHistorico(drog.idPk);
+    })
   }
 
   buscarHistorico(id: number) {
-    // return this.contatoDrogariaService.findByDrogariaId(id)
-    // .subscribe(
-    //   data => {
-    //     if (data.resultado.length == 0)
-    //       this.dialogRef.close();
-    //     const contatosDrogaria = data.resultado as contatoDrogaria[];
-    //     this.func = contatosDrogaria[0].drogaria.funcionario;
-    //     this.dataSource = new MatTableDataSource<contatoDrogaria>(contatosDrogaria);
-    //   },
-    //   err => {
-    //     console.log(err);
-    //   }
-    // )
+    return this.contatoDrogariaService.findByDrogariaId(id)
+    .subscribe(
+      data => {
+        if (data.resultado.length == 0)
+          this.dialogRef.close();
+        const contatosDrogaria = data.resultado as contatoUsuarioCampanha[];
+        this.func = contatosDrogaria[0].usuarioIdFkNavigation;
+        this.dataSource = new MatTableDataSource<contatoUsuarioCampanha>(contatosDrogaria);
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
-  excluirContatoDrogaria(contatoDrog: contatoDrogaria) : void {
+  excluirContatoDrogaria(contatoDrog: contatoUsuarioCampanha) : void {
     const confirmaExclusaoDialog = this.confirmacaoExclusaoDialog.open(ConfirmacaoExclusaoContatoComponent, {
       data: { contatoDrog }
     });
 
-    // confirmaExclusaoDialog.afterClosed().subscribe(result => {
-    //   if (result == true)
-    //     this.buscarHistorico(contatoDrog.drogaria.id)
-    // });
+    confirmaExclusaoDialog.afterClosed().subscribe(result => {
+      if (result == true)
+        this.buscarHistorico(contatoDrog.idPk)
+    });
   }
   
 }
