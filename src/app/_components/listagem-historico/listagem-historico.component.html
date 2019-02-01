@@ -10,13 +10,24 @@
  
   <div class="container-search">
       <mat-grid-list cols="12" rowHeight="100px">
-          <mat-grid-tile [colspan]="12" [rowspan]="1">
+          <mat-grid-tile [colspan]="9" [rowspan]="1">
               <div class="seach-input" class="full-width">
               <mat-form-field appearance="outline" class="full-width">
                   <mat-label>Pesquisa</mat-label>
                   <input #search matInput (input)="onKey(search.value)">
               </mat-form-field>
             </div>
+          </mat-grid-tile>
+          
+          <mat-grid-tile [colspan]="3" [rowspan]="1" style="margin-left: 1%;">
+            <mat-form-field style="width: 100%; margin-right: 2%;padding-right: 3%;" appearance="outline">
+              <mat-select placeholder="Status" #stat (selectionChange)="changeFilter($event.value)" [value]="0">
+                <mat-option *ngFor="let stat of status" [value]="stat.value">
+                {{stat.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+            <!-- <mat-checkbox #funcVinculado (change)="funcionarioVinculado($event)">Somente não contactadas</mat-checkbox> -->
           </mat-grid-tile>
         </mat-grid-list>  
   </div>
@@ -104,6 +115,15 @@
             </mat-header-cell>
             <mat-cell *matCellDef="let data" class="obs-table">
               {{ data.observacao }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="DataRetorno">
+            <mat-header-cell *matHeaderCellDef class="retorno-table">
+              Data Retorno
+            </mat-header-cell>
+            <mat-cell *matCellDef="let data" class="retorno-table">
+              {{ data.dataRetorno | date : 'dd/MM/yyyy' }}
             </mat-cell>
           </ng-container>
 

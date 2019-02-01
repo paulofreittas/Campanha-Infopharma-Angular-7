@@ -4,6 +4,7 @@ import { MatTableDataSource, PageEvent, MatDialog } from '@angular/material';
 import { ContatoDrogariaService, AuthenticationService } from '../../_services';
 import { Observable } from 'rxjs';
 import { HistoricoListaComponent } from '../../_components';
+import { Status } from '../../_interfaces';
 
 @Component({
   selector: 'app-listagem-historico',
@@ -13,11 +14,19 @@ import { HistoricoListaComponent } from '../../_components';
 export class ListagemHistoricoComponent implements OnInit {
 
   dataSource: MatTableDataSource<contatoDrogaria>;
-  colunas: string[] = ['DataAlteracao', 'NomeFantasia', 'CNPJ', 'Proposta', 'Situacao', 'UltObservacao', 'Acoes'];
+  colunas: string[] = ['DataAlteracao', 'NomeFantasia', 'CNPJ', 'Proposta', 'Situacao', 'UltObservacao', 'DataRetorno', 'Acoes'];
   user : usuarioIdFkNavigation;
   totalContatoDrogarias : number;
   private pagina: number;
   private search: string;
+  private statusValue: number;
+
+  status: Status[] = [
+    {value: 0, viewValue: 'Todos'},
+    {value: 1, viewValue: 'Recusado'},
+    {value: 2, viewValue: 'Proposta enviada'},
+    {value: 3, viewValue: 'Entrar em contato depois'}
+  ];
 
   constructor(private contatoDrogService: ContatoDrogariaService, 
               private authenticationService: AuthenticationService,
@@ -27,6 +36,12 @@ export class ListagemHistoricoComponent implements OnInit {
     this.user = this.authenticationService.currentUserValue;
     this.pagina = 0;
     this.search = "";
+    this.statusValue = 0;
+    this.buscarHistoricoContatos();
+  }
+
+  changeFilter($event) {
+    this.statusValue = $event;
     this.buscarHistoricoContatos();
   }
 
@@ -49,7 +64,7 @@ export class ListagemHistoricoComponent implements OnInit {
   }
 
   buscarHistoricoContatos() {
-    this.contatoDrogService.findByFuncionarioId(this.user.idPk, this.search, this.pagina)
+    this.contatoDrogService.findByFuncionarioId(this.user.idPk, this.statusValue, this.search, this.pagina)
     .subscribe(
       data => {
         this.totalContatoDrogarias = data.numeroResultados;
@@ -65,7 +80,7 @@ export class ListagemHistoricoComponent implements OnInit {
   openHistoricoDialog(drog: drogaria): void {
     const dialogRef = this.historicoListaDialog.open(HistoricoListaComponent, {
       data: { drog },
-      minWidth: 1000
+      minWidth: 1300
     });
 
     dialogRef.afterClosed().subscribe(result => {

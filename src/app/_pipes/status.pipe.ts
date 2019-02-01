@@ -12,13 +12,13 @@ export class StatusPipe implements PipeTransform {
   obterTexto(value: number) : string {
     var texto: string;
     switch (value) {
-      case 0:
+      case 1:
         texto = "Recusado";
         break;
-      case 1:
+      case 2:
         texto = "Proposta enviada";
         break;
-      case 2:
+      case 3:
         texto = "Entrar em contato depois";
         break;
       default:

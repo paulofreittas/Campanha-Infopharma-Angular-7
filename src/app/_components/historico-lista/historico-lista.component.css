@@ -34,16 +34,16 @@ mat-cell, mat-footer-cell, mat-header-cell {
 }
 
 .tipoProposta-table {
-    max-width: 175px;
+    max-width: 150px;
     text-align: center;
 }
 
 .status-table {
-    max-width: 175px;
+    max-width: 100px;
 }
 
 .observacao-table {
-    max-width: 350px;
+    max-width: 250px;
 }
 
 .acoes-table {

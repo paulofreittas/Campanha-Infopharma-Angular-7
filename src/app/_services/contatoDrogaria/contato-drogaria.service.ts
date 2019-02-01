@@ -22,12 +22,12 @@ export class ContatoDrogariaService {
     return this.http.get(env.baseApiUrl + this.PATH + "?drogariaId=" + id)
   }
 
-  findByFuncionarioId(funcionarioId: number, search: string, page: number) : Observable<any> {
+  findByFuncionarioId(funcionarioId: number, status: number, search: string, page: number) : Observable<any> {
     if (search == null) {
-      return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + funcionarioId)
+      return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + funcionarioId + "&status=" + status )
     } 
     else {
-      return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + funcionarioId + "&search=" + search + "&page=" + page)
+      return this.http.get(env.baseApiUrl + this.PATH + "?funcionarioId=" + funcionarioId + "&status=" + status + "&search=" + search + "&page=" + page)
     }
   }
 

@@ -5,13 +5,9 @@ import * as moment from 'moment';
 import { drogaria, contatoDrogaria, funcionario, usuarioIdFkNavigation } from 'src/app/_models';
 import { ContatoDrogariaService } from 'src/app/_services';
 import { contatoUsuarioCampanha } from '../../_models';
+import { Status } from '../../_interfaces';
 
 export interface Proposta {
-  value: number;
-  viewValue: string;
-}
-
-export interface Status {
   value: number;
   viewValue: string;
 }
@@ -32,9 +28,9 @@ export class VincularFuncionarioComponent implements OnInit {
   ];
 
   status: Status[] = [
-    {value: 0, viewValue: 'Recusado'},
-    {value: 1, viewValue: 'Proposta enviada'},
-    {value: 2, viewValue: 'Entrar em contato depois'}
+    {value: 1, viewValue: 'Recusado'},
+    {value: 2, viewValue: 'Proposta enviada'},
+    {value: 3, viewValue: 'Entrar em contato depois'}
   ];
 
   public dataAtual: string;
