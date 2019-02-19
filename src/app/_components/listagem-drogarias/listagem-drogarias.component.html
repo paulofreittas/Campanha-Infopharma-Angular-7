@@ -1,127 +1,183 @@
 <div class="containerX">
-  <div class="container">
+  <div>
     <div fxLayout="row">
       <app-menu-lateral></app-menu-lateral>
     </div>
   </div>
-  <div >
+  <div>
     <h3>Lista de Drogarias</h3>
   </div>
- 
-  <div class="container-search">
-      <mat-grid-list cols="12" rowHeight="100px">
-          <mat-grid-tile [colspan]="9" [rowspan]="1">
-              <div class="seach-input" class="full-width">
-              <mat-form-field appearance="outline" class="full-width">
-                  <mat-label>Pesquisa</mat-label>
-                  <input #search matInput (input)="onKey(search.value)">
-              </mat-form-field>
-            </div>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="3" [rowspan]="1" style="margin-left: 1%;">
-              <mat-checkbox #funcVinculado (change)="funcionarioVinculado($event)">Somente não contactadas</mat-checkbox>
-          </mat-grid-tile>
-        </mat-grid-list>  
-  </div>
-  
-  
 
-  <div class="container list-table">
+  <div class="container-search">
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
+        <div class="seach-input" class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Pesquisa</mat-label>
+            <input #search matInput (input)="onKey(search.value)" />
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1" style="margin-left: 1%;">
+        <mat-checkbox #funcVinculado (change)="funcionarioVinculado($event)"
+          >Somente não contactadas</mat-checkbox
+        >
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div class="list-table">
     <div fxLayout="column">
       <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="ID">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
-              ID
-            </mat-header-cell>
-            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor" class="id-table">
-              {{ drogaria.idPk }}
-            </mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="RazaoSocial" >
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="rs-table">
-              Razão Social
-            </mat-header-cell>
-            <mat-cell *matCellDef="let drogaria"  [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor" class="rs-table">
-              {{ drogaria.razaoSocial }}
-            </mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="NomeFantasia">
-            <mat-header-cell *matHeaderCellDef>
-              Nome Fantasia
-            </mat-header-cell>
-            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor">
-              {{ drogaria.nomeFantasia }}
-            </mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="CNPJ">
-            <mat-header-cell *matHeaderCellDef class="cnpj-table">
-              CNPJ
-            </mat-header-cell>
-            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor" class="cnpj-table">
-              {{ drogaria.cnpj }}
-            </mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="NomeContato">
-            <mat-header-cell *matHeaderCellDef class="contato-table">
-              Contato
-            </mat-header-cell>
-            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor" class="contato-table">
-              {{ drogaria.nomeContatoDrogaria }}
-            </mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="Cidade">
-            <mat-header-cell *matHeaderCellDef class="cidade-table">
-              Cidade
-            </mat-header-cell>
-            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor" class="cidade-table">
-              {{ drogaria.cidadeIdFkNavigation.nomeCidade }}
-            </mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="Estado">
-            <mat-header-cell *matHeaderCellDef class="estado-table">
-              Estado
-            </mat-header-cell>
-            <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor" class="estado-table">
-              {{ drogaria.uf | uf }}
-            </mat-cell>
-          </ng-container>
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            ID
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+            class="id-table"
+          >
+            {{ drogaria.idPk }}
+          </mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="Acoes">
-              <mat-header-cell *matHeaderCellDef class="acoes-table">
-                Ações
-              </mat-header-cell>
-              <mat-cell *matCellDef="let drogaria" [style.background]="drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor" class="acoes acoes-table" fxLayoutAlign="center">
-                <div class="acoes-btns">
-                    <a style="margin: 5px;" *ngIf="drogaria.contatousuariocampanha[0] == null" (click)="openVincularFuncionarioDialog(drogaria)"><mat-icon matTooltip="Selecionar cliente">check_circle_outline</mat-icon></a>
-                    <a style="cursor: pointer;margin: 5px;" *ngIf="drogaria.contatousuariocampanha[0] != null" (click)="openHistoricoDialog(drogaria)"><mat-icon matTooltip="Histórico">history</mat-icon></a>
-                </div>
-              </mat-cell>
+        <ng-container matColumnDef="RazaoSocial">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="rs-table">
+            Razão Social
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+            class="rs-table"
+          >
+            {{ drogaria.razaoSocial }}
+          </mat-cell>
+        </ng-container>
 
-            </ng-container>
-      
-        <mat-header-row 
-          *matHeaderRowDef="colunas"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+        <ng-container matColumnDef="NomeFantasia">
+          <mat-header-cell *matHeaderCellDef>
+            Nome Fantasia
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+          >
+            {{ drogaria.nomeFantasia }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="CNPJ">
+          <mat-header-cell *matHeaderCellDef class="cnpj-table">
+            CNPJ
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+            class="cnpj-table"
+          >
+            {{ drogaria.cnpj }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="NomeContato">
+          <mat-header-cell *matHeaderCellDef class="contato-table">
+            Contato
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+            class="contato-table"
+          >
+            {{ drogaria.nomeContatoDrogaria }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Cidade">
+          <mat-header-cell *matHeaderCellDef class="cidade-table">
+            Cidade
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+            class="cidade-table"
+          >
+            {{ drogaria.cidadeIdFkNavigation.nomeCidade }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Estado">
+          <mat-header-cell *matHeaderCellDef class="estado-table">
+            Estado
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+            class="estado-table"
+          >
+            {{ drogaria.uf | uf }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Acoes">
+          <mat-header-cell *matHeaderCellDef class="acoes-table">
+            Ações
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let drogaria"
+            [style.background]="
+              drogaria.contatousuariocampanha[0]?.usuarioIdFkNavigation?.cor
+            "
+            class="acoes acoes-table"
+            fxLayoutAlign="center"
+          >
+            <div class="acoes-btns">
+              <a
+                style="margin: 5px;"
+                *ngIf="drogaria.contatousuariocampanha[0] == null"
+                (click)="openVincularFuncionarioDialog(drogaria)"
+                ><mat-icon matTooltip="Selecionar cliente"
+                  >check_circle_outline</mat-icon
+                ></a
+              >
+              <a
+                style="cursor: pointer;margin: 5px;"
+                *ngIf="drogaria.contatousuariocampanha[0] != null"
+                (click)="openHistoricoDialog(drogaria)"
+                ><mat-icon matTooltip="Histórico">history</mat-icon></a
+              >
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas"></mat-row>
       </mat-table>
-      
-      <mat-paginator 
+
+      <mat-paginator
         [length]="totalDrogarias"
         [pageSize]="15"
-        (page)="paginar($event)">
+        (page)="paginar($event)"
+      >
       </mat-paginator>
-      
     </div>
   </div>
 </div>
 
 <div class="footer">
-    <app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
-
-

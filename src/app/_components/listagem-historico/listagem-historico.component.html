@@ -4,49 +4,55 @@
       <app-menu-lateral></app-menu-lateral>
     </div>
   </div>
-  <div >
+  <div>
     <h3>Meu Histórico</h3>
   </div>
- 
-  <div class="container-search">
-      <mat-grid-list cols="12" rowHeight="100px">
-          <mat-grid-tile [colspan]="9" [rowspan]="1">
-              <div class="seach-input" class="full-width">
-              <mat-form-field appearance="outline" class="full-width">
-                  <mat-label>Pesquisa</mat-label>
-                  <input #search matInput (input)="onKey(search.value)">
-              </mat-form-field>
-            </div>
-          </mat-grid-tile>
-          
-          <mat-grid-tile [colspan]="3" [rowspan]="1" style="margin-left: 1%;">
-            <mat-form-field style="width: 100%; margin-right: 2%;padding-right: 3%;" appearance="outline">
-              <mat-select placeholder="Status" #stat (selectionChange)="changeFilter($event.value)" [value]="0">
-                <mat-option *ngFor="let stat of status" [value]="stat.value">
-                {{stat.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-            <!-- <mat-checkbox #funcVinculado (change)="funcionarioVinculado($event)">Somente não contactadas</mat-checkbox> -->
-          </mat-grid-tile>
-        </mat-grid-list>  
-  </div>
-  
-  
 
-  <div class="container list-table">
+  <div class="container-search">
+    <mat-grid-list cols="12" rowHeight="100px">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
+        <div class="seach-input" class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Pesquisa</mat-label>
+            <input #search matInput (input)="onKey(search.value)" />
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="3" [rowspan]="1" style="margin-left: 1%;">
+        <mat-form-field
+          style="width: 100%; margin-right: 2%;padding-right: 3%;"
+          appearance="outline"
+        >
+          <mat-select
+            placeholder="Status"
+            #stat
+            (selectionChange)="changeFilter($event.value)"
+            [value]="0"
+          >
+            <mat-option *ngFor="let stat of status" [value]="stat.value">
+              {{ stat.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <mat-checkbox #funcVinculado (change)="funcionarioVinculado($event)">Somente não contactadas</mat-checkbox> -->
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div class="list-table">
     <div fxLayout="column">
       <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="DataAlteracao">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
-              Data Alteração
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="id-table">
-              {{ data.dataAlteracao | date: 'dd/MM/yyyy HH:mm:ss' }}
-            </mat-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-table">
+            Data Alteração
+          </mat-header-cell>
+          <mat-cell *matCellDef="let data" class="id-table">
+            {{ data.dataAlteracao | date: "dd/MM/yyyy HH:mm:ss" }}
+          </mat-cell>
         </ng-container>
-      
-          <!-- <ng-container matColumnDef="RazaoSocial" >
+
+        <!-- <ng-container matColumnDef="RazaoSocial" >
             <mat-header-cell *matHeaderCellDef mat-sort-header class="rs-table">
               Razão Social
             </mat-header-cell>
@@ -54,26 +60,26 @@
               {{ drogaria.razaoSocial }}
             </mat-cell>
           </ng-container> -->
-      
-          <ng-container matColumnDef="NomeFantasia">
-            <mat-header-cell *matHeaderCellDef>
-              Nome Fantasia
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data">
-              {{ data.clienteIdFkNavigation.nomeFantasia }}
-            </mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="CNPJ">
-            <mat-header-cell *matHeaderCellDef class="cnpj-table">
-              CNPJ
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="cnpj-table">
-              {{ data.clienteIdFkNavigation.cnpj }}
-            </mat-cell>
-          </ng-container>
-      
-          <!-- <ng-container matColumnDef="NomeContato">
+
+        <ng-container matColumnDef="NomeFantasia">
+          <mat-header-cell *matHeaderCellDef>
+            Nome Fantasia
+          </mat-header-cell>
+          <mat-cell *matCellDef="let data">
+            {{ data.clienteIdFkNavigation.nomeFantasia }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="CNPJ">
+          <mat-header-cell *matHeaderCellDef class="cnpj-table">
+            CNPJ
+          </mat-header-cell>
+          <mat-cell *matCellDef="let data" class="cnpj-table">
+            {{ data.clienteIdFkNavigation.cnpj }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="NomeContato">
             <mat-header-cell *matHeaderCellDef class="contato-table">
               Contato
             </mat-header-cell>
@@ -82,16 +88,16 @@
             </mat-cell>
           </ng-container> -->
 
-          <ng-container matColumnDef="Proposta">
-            <mat-header-cell *matHeaderCellDef class="proposta-table">
-              Proposta
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="proposta-table">
-              {{ data.tipoProposta | tipoProposta }}
-            </mat-cell>
-          </ng-container>
-      
-          <!-- <ng-container matColumnDef="Cidade">
+        <ng-container matColumnDef="Proposta">
+          <mat-header-cell *matHeaderCellDef class="proposta-table">
+            Proposta
+          </mat-header-cell>
+          <mat-cell *matCellDef="let data" class="proposta-table">
+            {{ data.tipoProposta | tipoProposta }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="Cidade">
             <mat-header-cell *matHeaderCellDef class="cidade-table">
               Cidade
             </mat-header-cell>
@@ -99,46 +105,54 @@
               {{ drogaria.cidade }}
             </mat-cell>
           </ng-container> -->
-      
-          <ng-container matColumnDef="Situacao">
-            <mat-header-cell *matHeaderCellDef class="situacao-table">
-              Situação
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="situacao-table">
-              {{ data.status | status }}
-            </mat-cell>
-          </ng-container>
 
-          <ng-container matColumnDef="UltObservacao">
-            <mat-header-cell *matHeaderCellDef class="obs-table">
-              Última Observação
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="obs-table">
-              {{ data.observacao }}
-            </mat-cell>
-          </ng-container>
+        <ng-container matColumnDef="Situacao">
+          <mat-header-cell *matHeaderCellDef class="situacao-table">
+            Situação
+          </mat-header-cell>
+          <mat-cell *matCellDef="let data" class="situacao-table">
+            {{ data.status | status }}
+          </mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="DataRetorno">
-            <mat-header-cell *matHeaderCellDef class="retorno-table">
-              Data Retorno
-            </mat-header-cell>
-            <mat-cell *matCellDef="let data" class="retorno-table">
-              {{ data.dataRetorno | date : 'dd/MM/yyyy' }}
-            </mat-cell>
-          </ng-container>
+        <ng-container matColumnDef="UltObservacao">
+          <mat-header-cell *matHeaderCellDef class="obs-table">
+            Última Observação
+          </mat-header-cell>
+          <mat-cell *matCellDef="let data" class="obs-table">
+            {{ data.observacao }}
+          </mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="Acoes">
-              <mat-header-cell *matHeaderCellDef class="acoes-table">
-                Ações
-              </mat-header-cell>
-              <mat-cell *matCellDef="let data" class="acoes acoes-table" fxLayoutAlign="center">
-                <div class="acoes-btns">
-                    <a style="cursor: pointer;margin: 5px;" (click)="openHistoricoDialog(data.clienteIdFkNavigation)"><mat-icon matTooltip="Histórico completo">history</mat-icon></a>
-                </div>
-              </mat-cell>
-          </ng-container>
-      
-          <!-- <ng-container matColumnDef="acao">
+        <ng-container matColumnDef="DataRetorno">
+          <mat-header-cell *matHeaderCellDef class="retorno-table">
+            Data Retorno
+          </mat-header-cell>
+          <mat-cell *matCellDef="let data" class="retorno-table">
+            {{ data.dataRetorno | date: "dd/MM/yyyy" }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Acoes">
+          <mat-header-cell *matHeaderCellDef class="acoes-table">
+            Ações
+          </mat-header-cell>
+          <mat-cell
+            *matCellDef="let data"
+            class="acoes acoes-table"
+            fxLayoutAlign="center"
+          >
+            <div class="acoes-btns">
+              <a
+                style="cursor: pointer;margin: 5px;"
+                (click)="openHistoricoDialog(data.clienteIdFkNavigation)"
+                ><mat-icon matTooltip="Histórico completo">history</mat-icon></a
+              >
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="acao">
             <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
             <mat-cell *matCellDef="let lancamento">
               <a routerLink="{{ '/admin/atualizacao/' + lancamento.id }}"
@@ -147,24 +161,21 @@
                 style="cursor: pointer"><mat-icon matTooltip="Remover lançamento">clear</mat-icon></a>
             </mat-cell>
           </ng-container> -->
-      
-        <mat-header-row 
-          *matHeaderRowDef="colunas"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+
+        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas"></mat-row>
       </mat-table>
-      
-      <mat-paginator 
+
+      <mat-paginator
         [length]="totalContatoDrogarias"
         [pageSize]="15"
-        (page)="paginar($event)">
+        (page)="paginar($event)"
+      >
       </mat-paginator>
-      
     </div>
   </div>
 </div>
 
 <div class="footer">
-    <app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
-
-

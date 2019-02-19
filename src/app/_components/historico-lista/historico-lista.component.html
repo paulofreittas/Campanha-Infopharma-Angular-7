@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-  <div class="container list-table">
+  <div class="list-table">
     <div fxLayout="column" style="text-align: center;">
       <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="ID">
@@ -12,7 +12,11 @@
         </ng-container>
 
         <ng-container matColumnDef="NomeFantasia">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="nomeFantasia-table">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="nomeFantasia-table"
+          >
             Nome Fantasia
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="nomeFantasia-table">
@@ -21,37 +25,50 @@
         </ng-container>
 
         <ng-container matColumnDef="Funcionario">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="funcionario-table">
-              Funcionario
-            </mat-header-cell>
-            <mat-cell *matCellDef="let cd" class="funcionario-table">
-              {{ cd.usuarioIdFkNavigation.nome }}
-            </mat-cell>
-          </ng-container>
-
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="funcionario-table"
+          >
+            Funcionario
+          </mat-header-cell>
+          <mat-cell *matCellDef="let cd" class="funcionario-table">
+            {{ cd.usuarioIdFkNavigation.nome }}
+          </mat-cell>
+        </ng-container>
 
         <ng-container matColumnDef="Data">
           <mat-header-cell *matHeaderCellDef mat-sort-header class="data-table">
             Data
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="data-table">
-            {{ cd.dataAlteracao | date: 'dd/MM/yyyy HH:mm:ss'}}
+            {{ cd.dataAlteracao | date: "dd/MM/yyyy HH:mm:ss" }}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="TipoProposta">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="tipoProposta-table">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="tipoProposta-table"
+          >
             Tipo Proposta
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="tipoProposta-table">
-              <mat-chip-list aria-orientation="vertical">
-                  <mat-chip [selectable]="false">{{ cd.tipoProposta | tipoProposta }}</mat-chip>
-              </mat-chip-list>
+            <mat-chip-list aria-orientation="vertical">
+              <mat-chip [selectable]="false">{{
+                cd.tipoProposta | tipoProposta
+              }}</mat-chip>
+            </mat-chip-list>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Status">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="status-table">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="status-table"
+          >
             Status
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="status-table">
@@ -60,7 +77,11 @@
         </ng-container>
 
         <ng-container matColumnDef="Observacao">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="observacao-table">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="observacao-table"
+          >
             Observação
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="observacao-table">
@@ -73,27 +94,45 @@
             Data de Retorno
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="data-table">
-            {{ cd.dataRetorno | date: 'dd/MM/yyyy'}}
+            {{ cd.dataRetorno | date: "dd/MM/yyyy" }}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Acoes">
-          <mat-header-cell *matHeaderCellDef mat-sort-header class="acoes-table">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="acoes-table"
+          >
             Ações
           </mat-header-cell>
           <mat-cell *matCellDef="let cd" class="acoes-table">
             <div class="acoes-btns" *ngIf="func.id == user.id">
               <!-- <a style="cursor: pointer;margin: 5px;"><mat-icon matTooltip="Histórico">history</mat-icon></a> -->
-              <a style="cursor: pointer;margin: 5px;" (click)="excluirContatoDrogaria(cd)"><mat-icon matTooltip="Excluir">delete</mat-icon></a>
+              <a
+                style="cursor: pointer;margin: 5px;"
+                (click)="excluirContatoDrogaria(cd)"
+                ><mat-icon matTooltip="Excluir">delete</mat-icon></a
+              >
             </div>
           </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+        <mat-row *matRowDef="let row; columns: colunas"></mat-row>
       </mat-table>
-      <div class="center" style="margin: 1%;margin-top: 2%" *ngIf="func.idPk == user.idPk">
-        <button mat-mini-fab matTooltip="Adicionar contato" (click)="openVincularFuncionarioDialog(data.drog)"><mat-icon>add</mat-icon></button>
+      <div
+        class="center"
+        style="margin: 1%;margin-top: 2%"
+        *ngIf="func.idPk == user.idPk"
+      >
+        <button
+          mat-mini-fab
+          matTooltip="Adicionar contato"
+          (click)="openVincularFuncionarioDialog(data.drog)"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
     </div>
   </div>

@@ -1,24 +1,41 @@
-<div class="container">
+<div class="login">
   <div fxLayout fxLayoutAlign="center center" style="padding-top: 10%">
     <mat-card>
-      <img src="../../../assets/infopharma-logo.png">
-      <form [formGroup]="form" fxLayoutAlign="center" class="full-width" novalidate>
+      <img src="../../../assets/infopharma-logo.png" />
+      <form
+        [formGroup]="form"
+        fxLayoutAlign="center"
+        class="full-width"
+        novalidate
+      >
         <div class="full-width">
           <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput formControlName="username">
+            <input matInput formControlName="username" />
           </mat-form-field>
         </div>
         <div class="full-width">
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <input
+              matInput
+              formControlName="password"
+              [type]="hide ? 'password' : 'text'"
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
           </mat-form-field>
         </div>
         <div class="div-login">
-          <button mat-raised-button color="primary" class="center full-width" [disabled]="form.invalid" (click)="logar()">
-            {{nameBtn}}
+          <button
+            mat-raised-button
+            color="primary"
+            class="center full-width"
+            [disabled]="form.invalid"
+            (click)="logar()"
+          >
+            {{ nameBtn }}
           </button>
         </div>
       </form>

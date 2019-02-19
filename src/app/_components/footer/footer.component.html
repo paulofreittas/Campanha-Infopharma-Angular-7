@@ -1,17 +1,13 @@
 <footer class="main-footer">
-    <mat-grid-list cols="12" rowHeight="20px">
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-          <div class="version">
-            Versão: <b>Beta 1.0.0</b>
-          </div>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-          
-          </mat-grid-tile>
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-            <div class="date">
-                Data: <b>{{ dataAtual | date }}</b>
-            </div>
-        </mat-grid-tile>
-    </mat-grid-list>
+  <mat-grid-list cols="12" rowHeight="20px">
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <div class="version">Versão: <b>Beta 1.0.0</b></div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1"> </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <div class="date">
+        Data: <b>{{ dataAtual | date }}</b>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </footer>

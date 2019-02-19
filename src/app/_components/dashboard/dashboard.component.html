@@ -1,1 +1,141 @@
 <app-menu-lateral></app-menu-lateral>
+
+<div class="containerX">
+  <mat-card>
+    <div>
+      <h3>Seus números</h3>
+    </div>
+    <ul>
+      <li class="card">
+        <div class="card__flipper">
+          <div class="card__front">
+            <p class="card__name">Drogarias Contactadas</p>
+            <p class="card__num">{{ dadosUsuario.drogariasContactadas }}</p>
+          </div>
+          <div class="card__back">
+            <svg height="180" width="180">
+              <circle
+                cx="90"
+                cy="90"
+                r="55"
+                stroke="#514d9b"
+                stroke-width="35"
+              />
+            </svg>
+            <span>113.2</span>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="card__flipper">
+          <div class="card__front">
+            <p class="card__name">Contratos Fechados</p>
+            <p class="card__num">{{ dadosUsuario.contratosFechados }}</p>
+          </div>
+          <div class="card__back">
+            <svg height="180" width="180">
+              <circle
+                cx="90"
+                cy="90"
+                r="55"
+                stroke="#35a541"
+                stroke-width="35"
+              />
+            </svg>
+            <span>112.2</span>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="card__flipper">
+          <div class="card__front">
+            <p class="card__name">Contatos Hoje</p>
+            <p class="card__num">
+              {{ dadosUsuario.drogariasContactadasNoDia }}/20
+            </p>
+          </div>
+          <div class="card__back">
+            <svg height="180" width="180">
+              <circle
+                cx="90"
+                cy="90"
+                r="55"
+                stroke="#bdb235"
+                stroke-width="35"
+              />
+            </svg>
+            <span>103.3</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </mat-card>
+
+  <mat-card>
+    <div>
+      <h3>Ranking do Time</h3>
+    </div>
+
+    <div class="list-table">
+      <div fxLayout="column">
+        <mat-table #table [dataSource]="dataSource">
+          <ng-container matColumnDef="Ranking">
+            <mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              class="ranking-table"
+            >
+              Posição
+            </mat-header-cell>
+            <mat-cell *matCellDef="let dados = index" class="ranking-table">
+              {{ dados + 1 }}º
+              <img src="../../../assets/gold_medal.png" *ngIf="dados == 0" />
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Nome">
+            <mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              class="nome-table"
+            >
+              Nome
+            </mat-header-cell>
+            <mat-cell *matCellDef="let dados" class="nome-table">
+              {{ dados.usuario.nome || dados.usuario.username }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="DrogariasContactadas">
+            <mat-header-cell *matHeaderCellDef class="contato-table">
+              Drogarias Contactadas
+            </mat-header-cell>
+            <mat-cell *matCellDef="let dados" class="contato-table">
+              {{ dados.drogariasContactadas }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ContratosFechados">
+            <mat-header-cell *matHeaderCellDef class="contrato-table">
+              Contratos Fechados
+            </mat-header-cell>
+            <mat-cell *matCellDef="let dados" class="contrato-table">
+              {{ dados.contratosFechados }}
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: colunas"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+
+    <div class="totalContratos">
+      Total de Contratos: {{ dashboard.totalContratosFechados }}
+    </div>
+  </mat-card>
+</div>
+
+<div class="footer">
+  <app-footer></app-footer>
+</div>
